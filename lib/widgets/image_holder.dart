@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import '../models/image_view.dart';
 
 class ImageViewer extends StatefulWidget {

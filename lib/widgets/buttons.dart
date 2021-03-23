@@ -94,7 +94,7 @@ class _ButtonsGroupState extends State<ButtonsGroup> {
           // upload action button
           FloatingActionButton(
             backgroundColor: Colors.black38,
-            onPressed: () => widget.updateImageView(),
+            onPressed: widget.updateImageView,
             child: Icon(
               Icons.arrow_upward_sharp,
               color: Colors.white,

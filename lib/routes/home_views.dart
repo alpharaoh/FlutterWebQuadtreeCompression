@@ -44,7 +44,7 @@ class _HomeViewState extends State<HomeView> {
             Row(
               children: [
                 ImageViewer(imageToViewer),
-                SidebarWidget(changeImageSrc),
+                SidebarWidget(updateImageHandler: changeImageSrc),
               ],
             ),
           ],
@@ -58,9 +58,7 @@ class _HomeViewState extends State<HomeView> {
 class SidebarWidget extends StatefulWidget {
   final Function updateImageHandler;
 
-  SidebarWidget(void Function() changeImageSrc,
-      {@required this.updateImageHandler, Key key})
-      : super(key: key, updateImageHandler: updateImageHandler);
+  SidebarWidget({@required this.updateImageHandler});
 
   @override
   _SidebarWidgetState createState() => _SidebarWidgetState();
@@ -80,7 +78,7 @@ class _SidebarWidgetState extends State<SidebarWidget> {
           // Slider
           Sliders(),
           // Container for buttons
-          ButtonsGroup(widget.updateImageHandler),
+          ButtonsGroup(updateImageView: widget.updateImageHandler),
         ],
       ),
     );

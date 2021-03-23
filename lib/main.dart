@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import './routes/home_views.dart';
 
+// Application Entry
 void main() {
   runApp(MyApp());
 }
 
-// stless
+// Application Entry Widget
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
