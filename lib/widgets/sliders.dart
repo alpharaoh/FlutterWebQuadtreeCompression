@@ -6,8 +6,8 @@ class Sliders extends StatefulWidget {
 }
 
 class _SlidersState extends State<Sliders> {
+  // Slider values
   double _depthSlider = 7;
-
   double _detailSlider = 10;
 
   @override
@@ -19,9 +19,7 @@ class _SlidersState extends State<Sliders> {
         padding: EdgeInsets.only(top: 80.0),
         child: Column(
           children: [
-            /*
-                These are the widgets for detail and depth slider
-                */
+            // Depth slider
             Container(
               width: 300.0,
               child: Slider(
@@ -42,6 +40,7 @@ class _SlidersState extends State<Sliders> {
                 style: Theme.of(context).textTheme.bodyText2,
               ),
             ),
+            // Detail slider
             Container(
               width: 300.0,
               child: Slider(
@@ -49,7 +48,6 @@ class _SlidersState extends State<Sliders> {
                 min: 1,
                 max: 30,
                 label: _detailSlider.round().toString(),
-                //divisions: 40,
                 onChanged: (value) {
                   setState(() {
                     _detailSlider = value;

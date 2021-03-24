@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import '../models/image_view.dart';
 
-class ImageViewer extends StatefulWidget {
+class ImageHolder extends StatefulWidget {
   final String _currentImage;
 
-  ImageViewer(this._currentImage);
+  ImageHolder(this._currentImage);
 
   @override
-  _ImageViewerState createState() => _ImageViewerState();
+  _ImageHolderState createState() => _ImageHolderState();
 }
 
-class _ImageViewerState extends State<ImageViewer> {
-  String _placehold = "https://static.thenounproject.com/png/1686943-200.png";
+class _ImageHolderState extends State<ImageHolder> {
+  // No image placeholder
+  final String _placehold =
+      "https://static.thenounproject.com/png/140281-200.png";
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +25,8 @@ class _ImageViewerState extends State<ImageViewer> {
           // need max width height
           width: 1500.0,
           height: MediaQuery.of(context).size.height,
-          child: (widget._currentImage == null)
+          // If current image is not present, we display placeholder image, otherwise we get current image
+          child: (widget._currentImage.isEmpty)
               ? Image.network(_placehold)
               : Image.network(widget._currentImage),
         ),

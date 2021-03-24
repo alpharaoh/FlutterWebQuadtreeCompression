@@ -1,8 +1,6 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
-import '../models/image_view.dart';
-import '../widgets/image_holder.dart';
+// Models import
+import '../models/displayed_image.dart';
 
 class ButtonsGroup extends StatefulWidget {
   final Function updateImageView;
@@ -14,9 +12,8 @@ class ButtonsGroup extends StatefulWidget {
 }
 
 class _ButtonsGroupState extends State<ButtonsGroup> {
-  ImageView image = ImageView();
-
-  void updateImage() {}
+  // Instantiate model class
+  CurrentDisplayedImage image = CurrentDisplayedImage();
 
   downloadAlertDioalog(BuildContext context) {
     return showDialog(
@@ -25,6 +22,7 @@ class _ButtonsGroupState extends State<ButtonsGroup> {
           return SimpleDialog(
             backgroundColor: Colors.blueAccent,
             children: [
+              // Download is ready pop up
               Container(
                 width: 130.0,
                 height: 30.0,
@@ -62,15 +60,10 @@ class _ButtonsGroupState extends State<ButtonsGroup> {
       alignment: Alignment.bottomCenter,
       padding: EdgeInsets.only(bottom: 30.0, top: 30.0),
       width: 200,
-      //color: Colors.amber,
-      //margin: EdgeInsets.only(top: 150.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
-          /*
-          These are the widgets for reset, download and upload buttons
-          */
-          // reset action button
+          // Reset action button
           FloatingActionButton(
             backgroundColor: Colors.black38,
             onPressed: () {},
@@ -79,19 +72,18 @@ class _ButtonsGroupState extends State<ButtonsGroup> {
               color: Colors.white,
             ),
           ),
-          // download action button
+          // Download action button
           FloatingActionButton(
             backgroundColor: Colors.black38,
             onPressed: () {
               downloadAlertDioalog(context);
-              //startDownload();
             },
             child: Icon(
               Icons.download_sharp,
               color: Colors.white,
             ),
           ),
-          // upload action button
+          // Upload action button
           FloatingActionButton(
             backgroundColor: Colors.black38,
             onPressed: widget.updateImageView,

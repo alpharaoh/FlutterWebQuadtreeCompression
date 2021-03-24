@@ -1,16 +1,16 @@
 import 'dart:developer';
 import 'package:flutter/material.dart';
-// Widgetr Import
+// Widgets Import
 import '../widgets/sliders.dart';
 import '../widgets/buttons.dart';
 import '../widgets/image_holder.dart';
 // Models Import
-import '../models/image_view.dart';
+import '../models/displayed_image.dart';
 
 // Home View
 class HomeView extends StatefulWidget {
   final String title;
-  //ctor
+  // Constructor
   HomeView({this.title});
 
   @override
@@ -18,11 +18,7 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
-  Future<void> startDownload() async {
-    log("Download should start");
-  }
-
-  ImageView imageView = ImageView();
+  CurrentDisplayedImage imageView = CurrentDisplayedImage();
   String imageToViewer = '';
 
   // Methods
@@ -43,7 +39,9 @@ class _HomeViewState extends State<HomeView> {
           children: <Widget>[
             Row(
               children: [
-                ImageViewer(imageToViewer),
+                // Left
+                ImageHolder(imageToViewer),
+                // Right
                 SidebarWidget(updateImageHandler: changeImageSrc),
               ],
             ),
@@ -58,6 +56,7 @@ class _HomeViewState extends State<HomeView> {
 class SidebarWidget extends StatefulWidget {
   final Function updateImageHandler;
 
+  // Pass in function
   SidebarWidget({@required this.updateImageHandler});
 
   @override
@@ -78,7 +77,9 @@ class _SidebarWidgetState extends State<SidebarWidget> {
           // Slider
           Sliders(),
           // Container for buttons
-          ButtonsGroup(updateImageView: widget.updateImageHandler),
+          ButtonsGroup(
+              updateImageView: widget
+                  .updateImageHandler), // Pass in function to Buttons class
         ],
       ),
     );
