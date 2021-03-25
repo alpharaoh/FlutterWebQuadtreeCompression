@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
@@ -22,7 +24,6 @@ class _ImageHolderState extends State<ImageHolder> {
         cursor: SystemMouseCursors.grab,
         child: Container(
           color: Colors.black38,
-          // need max width height
           width: 1500.0,
           height: MediaQuery.of(context).size.height,
           // If current image is not present, we display placeholder image, otherwise we get current image

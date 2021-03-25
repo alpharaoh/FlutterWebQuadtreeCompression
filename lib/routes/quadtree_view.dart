@@ -1,11 +1,12 @@
 import 'dart:developer';
 import 'package:flutter/material.dart';
+import 'package:portfolio/widgets/image_picker.dart';
 // Widgets Import
-import '../widgets/sliders.dart';
-import '../widgets/buttons.dart';
-import '../widgets/image_holder.dart';
+import 'package:portfolio/widgets/sliders.dart';
+import 'package:portfolio/widgets/buttons.dart';
+import 'package:portfolio/widgets/image_holder.dart';
 // Models Import
-import '../models/displayed_image.dart';
+import 'package:portfolio/models/displayed_image.dart';
 
 // Home View
 class HomeView extends StatefulWidget {
@@ -76,6 +77,7 @@ class _SidebarWidgetState extends State<SidebarWidget> {
         children: [
           // Slider
           Sliders(),
+          ImagePickerWidget(),
           // Container for buttons
           ButtonsGroup(
               updateImageView: widget
