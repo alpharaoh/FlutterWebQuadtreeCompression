@@ -1,8 +1,10 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
 class ImageHolder extends StatefulWidget {
-  final String _currentImage;
+  final File _currentImage;
 
   ImageHolder(this._currentImage);
 
@@ -26,9 +28,9 @@ class _ImageHolderState extends State<ImageHolder> {
           width: 1500.0,
           height: MediaQuery.of(context).size.height,
           // If current image is not present, we display placeholder image, otherwise we get current image
-          child: (widget._currentImage.isEmpty)
+          child: (widget._currentImage == null)
               ? Image.network(_placehold)
-              : Image.network(widget._currentImage),
+              : Image.file(widget._currentImage),
         ),
       ),
     );

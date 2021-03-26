@@ -1,5 +1,7 @@
 import 'dart:developer';
+import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:portfolio/widgets/image_picker.dart';
 // Widgets Import
 import '../widgets/sliders.dart';
 import '../widgets/buttons.dart';
@@ -19,13 +21,12 @@ class HomeView extends StatefulWidget {
 
 class _HomeViewState extends State<HomeView> {
   CurrentDisplayedImage imageView = CurrentDisplayedImage();
-  String imageToViewer = '';
+  File imageToViewer;
 
   // Methods
   void changeImageSrc() {
     setState(() {
-      imageToViewer =
-          'https://upload.wikimedia.org/wikipedia/commons/b/b9/Caspar_David_Friedrich_-_Wanderer_above_the_sea_of_fog.jpg';
+      imageToViewer = imageView.getImage();
     });
   }
 
@@ -42,7 +43,9 @@ class _HomeViewState extends State<HomeView> {
                 // Left
                 ImageHolder(imageToViewer),
                 // Right
-                SidebarWidget(updateImageHandler: changeImageSrc),
+                SidebarWidget(
+                    updateImageHandler: changeImageSrc,
+                    imageViewObj: imageView),
               ],
             ),
           ],
@@ -55,9 +58,11 @@ class _HomeViewState extends State<HomeView> {
 // Slider and Button Holder Container
 class SidebarWidget extends StatefulWidget {
   final Function updateImageHandler;
+  final CurrentDisplayedImage imageViewObj;
 
   // Pass in function
-  SidebarWidget({@required this.updateImageHandler});
+  SidebarWidget(
+      {@required this.updateImageHandler, @required this.imageViewObj});
 
   @override
   _SidebarWidgetState createState() => _SidebarWidgetState();
@@ -76,6 +81,7 @@ class _SidebarWidgetState extends State<SidebarWidget> {
         children: [
           // Slider
           Sliders(),
+          ImagePickerWidget(updateImageView: widget.imageViewObj),
           // Container for buttons
           ButtonsGroup(
               updateImageView: widget
