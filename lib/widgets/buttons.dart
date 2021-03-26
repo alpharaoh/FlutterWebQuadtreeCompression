@@ -12,9 +12,6 @@ class ButtonsGroup extends StatefulWidget {
 }
 
 class _ButtonsGroupState extends State<ButtonsGroup> {
-  // Instantiate model class
-  CurrentDisplayedImage image = CurrentDisplayedImage();
-
   downloadAlertDioalog(BuildContext context) {
     return showDialog(
         context: context,

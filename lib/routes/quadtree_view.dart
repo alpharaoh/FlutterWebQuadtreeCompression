@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:portfolio/widgets/image_picker.dart';
 // Widgets Import
@@ -20,13 +21,18 @@ class HomeView extends StatefulWidget {
 
 class _HomeViewState extends State<HomeView> {
   CurrentDisplayedImage imageView = CurrentDisplayedImage();
-  String imageToViewer = '';
+  File imageToViewer;
 
   // Methods
-  void changeImageSrc() {
+  void getImageSrc() {
     setState(() {
-      imageToViewer =
-          'https://upload.wikimedia.org/wikipedia/commons/b/b9/Caspar_David_Friedrich_-_Wanderer_above_the_sea_of_fog.jpg';
+      imageToViewer = imageView.getImage();
+    });
+  }
+
+  void changeImageSrc(File image) {
+    setState(() {
+      imageToViewer = image;
     });
   }
 
@@ -43,7 +49,9 @@ class _HomeViewState extends State<HomeView> {
                 // Left
                 ImageHolder(imageToViewer),
                 // Right
-                SidebarWidget(updateImageHandler: changeImageSrc),
+                SidebarWidget(
+                    updateImageHandler: changeImageSrc,
+                    getImageHandler: getImageSrc),
               ],
             ),
           ],
@@ -56,9 +64,11 @@ class _HomeViewState extends State<HomeView> {
 // Slider and Button Holder Container
 class SidebarWidget extends StatefulWidget {
   final Function updateImageHandler;
+  final Function getImageHandler;
 
   // Pass in function
-  SidebarWidget({@required this.updateImageHandler});
+  SidebarWidget(
+      {@required this.updateImageHandler, @required this.getImageHandler});
 
   @override
   _SidebarWidgetState createState() => _SidebarWidgetState();
@@ -77,11 +87,11 @@ class _SidebarWidgetState extends State<SidebarWidget> {
         children: [
           // Slider
           Sliders(),
-          ImagePickerWidget(),
+          ImagePickerWidget(updateImageView: widget.updateImageHandler),
           // Container for buttons
           ButtonsGroup(
-              updateImageView: widget
-                  .updateImageHandler), // Pass in function to Buttons class
+              updateImageView:
+                  widget.getImageHandler), // Pass in function to Buttons class
         ],
       ),
     );
