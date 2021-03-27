@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
 class ImageHolder extends StatefulWidget {
-  final File _currentImage;
+  final Image _currentImage;
 
   ImageHolder(this._currentImage);
 
@@ -24,13 +24,12 @@ class _ImageHolderState extends State<ImageHolder> {
         cursor: SystemMouseCursors.grab,
         child: Container(
           color: Colors.black38,
-          // need max width height
           width: 1500.0,
           height: MediaQuery.of(context).size.height,
           // If current image is not present, we display placeholder image, otherwise we get current image
           child: (widget._currentImage == null)
               ? Image.network(_placehold)
-              : Image.file(widget._currentImage),
+              : widget._currentImage,
         ),
       ),
     );

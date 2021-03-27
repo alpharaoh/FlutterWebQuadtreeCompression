@@ -6,6 +6,7 @@ import 'dart:typed_data';
 import 'dart:convert';
 import 'dart:async';
 import 'dart:io';
+//import 'package:image/image.dart' as image;
 
 import 'package:portfolio/models/displayed_image.dart';
 
@@ -23,16 +24,6 @@ class _ImageHolderState extends State<ImagePickerWidget> {
   List<int> _selectedFile;
   Uint8List _bytesData;
   File _recievedFile;
-
-  void convertRetrievedBinary(binary) async {
-    // Get binary for file
-    Uint8List fileBin = await binary;
-    File file = File.fromRawPath(fileBin);
-    setState(() {
-      // Set _recievedFile to the decoded binary file
-      _recievedFile = file;
-    });
-  }
 
   void startWebFilePicker() async {
     // Open file picking
@@ -71,15 +62,16 @@ class _ImageHolderState extends State<ImagePickerWidget> {
       print("\nResponse: $responseCode");
       if (response.statusCode == 200) print("Successfully uploaded.");
 
-      File _transferedImage = File(
-          "/home/alpharaoh/Documents/coding/flutter/PersonalPortfolioProject/PersonalPortfolio/assets/images/test.jpg");
-
-      // // Convert response binary to File type and set _receivedImage
-      // convertRetrievedBinary(response.stream.toBytes());
-
-      print(_transferedImage);
-      // Change displayed image to _recievedFile
-      widget.updateImageView.changeImage(_transferedImage);
+      // Convert response binary to File type and set _receivedImage
+      var future = response.stream.toBytes();
+      future.then((binary) {
+        setState(() {
+          // Get file from binary
+          Image _recievedFile = Image.memory(binary);
+          // Change displayed image to _recievedFile
+          widget.updateImageView.changeImage(_recievedFile);
+        });
+      });
     });
   }
 

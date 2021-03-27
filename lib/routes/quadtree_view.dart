@@ -8,6 +8,7 @@ import '../widgets/buttons.dart';
 import '../widgets/image_holder.dart';
 // Models Import
 import '../models/displayed_image.dart';
+import 'package:flutter/material.dart';
 
 // Home View
 class HomeView extends StatefulWidget {
@@ -21,7 +22,7 @@ class HomeView extends StatefulWidget {
 
 class _HomeViewState extends State<HomeView> {
   CurrentDisplayedImage imageView = CurrentDisplayedImage();
-  File imageToViewer;
+  Image imageToViewer;
 
   // Methods
   void changeImageSrc() {
