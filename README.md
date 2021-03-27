@@ -6,7 +6,7 @@ TODO:
 - ~~Display image response~~
 - Fix button formatting
 - Add more settings widgets
-- Send settings to API with image
+- ~~Send settings to API with image~~
 - Get multiple images from API
 - Allow user to download all images/GIFS as a .zip
 - Add slider for GIF
