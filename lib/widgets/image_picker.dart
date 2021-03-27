@@ -1,6 +1,7 @@
 import 'package:http_parser/http_parser.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'dart:html' as html;
 import 'dart:typed_data';
 import 'dart:convert';
@@ -11,9 +12,10 @@ import 'dart:io';
 import 'package:portfolio/models/displayed_image.dart';
 
 class ImagePickerWidget extends StatefulWidget {
-  final CurrentDisplayedImage updateImageView;
+  final CurrentDisplayedImage imageView;
+  final Function updateImageView;
 
-  ImagePickerWidget({@required this.updateImageView});
+  ImagePickerWidget({@required this.imageView, @required this.updateImageView});
 
   @override
   _ImageHolderState createState() => _ImageHolderState();
@@ -24,6 +26,7 @@ class _ImageHolderState extends State<ImagePickerWidget> {
   List<int> _selectedFile;
   Uint8List _bytesData;
   File _recievedFile;
+  String _file_name;
 
   void startWebFilePicker() async {
     // Open file picking
@@ -37,6 +40,9 @@ class _ImageHolderState extends State<ImagePickerWidget> {
       final files = uploadInput.files;
       final file = files[0];
       final reader = new html.FileReader();
+      setState(() {
+        _file_name = file.name;
+      });
 
       // Encode files
       reader.onLoadEnd.listen((event) {
@@ -54,13 +60,19 @@ class _ImageHolderState extends State<ImagePickerWidget> {
     // Add file to MultipartRequest
     request.files.add(await http.MultipartFile.fromBytes("file", _selectedFile,
         contentType: new MediaType("application/json", "multipart/form-data"),
-        filename: "file_up"));
+        filename: _file_name));
+
+    request.files.add(http.MultipartFile.fromString("depth", "6"));
+    request.files.add(http.MultipartFile.fromString("detail", "30"));
+    request.files.add(http.MultipartFile.fromString("max_depth", "8"));
+    request.files.add(http.MultipartFile.fromString("size_mult", "0.5"));
 
     request.send().then((response) async {
       // Handle and output response
-      int responseCode = response.statusCode;
-      print("\nResponse: $responseCode");
-      if (response.statusCode == 200) print("Successfully uploaded.");
+      String currentDate =
+          DateFormat('yyyy-MM-dd – kk:mm').format(DateTime.now());
+      if (response.statusCode == 200)
+        print("Successfully uploaded - $currentDate");
 
       // Convert response binary to File type and set _receivedImage
       var future = response.stream.toBytes();
@@ -69,7 +81,8 @@ class _ImageHolderState extends State<ImagePickerWidget> {
           // Get file from binary
           Image _recievedFile = Image.memory(binary);
           // Change displayed image to _recievedFile
-          widget.updateImageView.changeImage(_recievedFile);
+          widget.imageView.changeImage(_recievedFile);
+          widget.updateImageView();
         });
       });
     });
@@ -85,43 +98,47 @@ class _ImageHolderState extends State<ImagePickerWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Container(
-          width: 200.0,
-          height: 40.0,
-          child: OutlinedButton(
-            style: ButtonStyle(
-              foregroundColor: MaterialStateProperty.all<Color>(Colors.blue),
-            ),
-            onPressed: () => startWebFilePicker(),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Icon(Icons.add_sharp),
-                Text(
-                  "SELECT IMAGE",
-                  style: Theme.of(context).textTheme.bodyText2,
-                ),
-              ],
-            ),
-          ),
-        ),
-        Container(
-          width: 40.0,
-          height: 40.0,
-          child: OutlinedButton(
-            style: ButtonStyle(
-              foregroundColor: MaterialStateProperty.all<Color>(Colors.blue),
-            ),
-            onPressed: () => makeRequest(),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [Icon(Icons.upload_file)],
+    return Container(
+      //color: Colors.amber,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Container(
+            width: 200.0,
+            height: 40.0,
+            child: OutlinedButton(
+              style: ButtonStyle(
+                foregroundColor: MaterialStateProperty.all<Color>(Colors.blue),
+              ),
+              onPressed: () => startWebFilePicker(),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Icon(Icons.add_sharp),
+                  Text(
+                    "SELECT IMAGE",
+                    style: Theme.of(context).textTheme.bodyText2,
+                  ),
+                ],
+              ),
             ),
           ),
-        ),
-      ],
+          Container(
+            width: 40.0,
+            height: 40.0,
+            child: OutlinedButton(
+              style: ButtonStyle(
+                foregroundColor: MaterialStateProperty.all<Color>(Colors.blue),
+              ),
+              onPressed: () => makeRequest(),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [Icon(Icons.upload_file)],
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

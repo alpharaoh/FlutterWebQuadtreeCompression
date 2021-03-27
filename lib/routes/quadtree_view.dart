@@ -82,11 +82,11 @@ class _SidebarWidgetState extends State<SidebarWidget> {
         children: [
           // Slider
           Sliders(),
-          ImagePickerWidget(updateImageView: widget.imageViewObj),
+          ImagePickerWidget(
+              imageView: widget.imageViewObj,
+              updateImageView: widget.updateImageHandler),
           // Container for buttons
-          ButtonsGroup(
-              updateImageView: widget
-                  .updateImageHandler), // Pass in function to Buttons class
+          ButtonsGroup(), // Pass in function to Buttons class
         ],
       ),
     );

@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import '../models/displayed_image.dart';
 
 class ButtonsGroup extends StatefulWidget {
-  final Function updateImageView;
+  // final Function updateImageView;
 
-  ButtonsGroup({@required this.updateImageView});
+  // ButtonsGroup({@required this.updateImageView});
 
   @override
   _ButtonsGroupState createState() => _ButtonsGroupState();
@@ -56,7 +56,7 @@ class _ButtonsGroupState extends State<ButtonsGroup> {
     return Container(
       alignment: Alignment.bottomCenter,
       padding: EdgeInsets.only(bottom: 30.0, top: 30.0),
-      width: 200,
+      width: 150,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
@@ -81,14 +81,14 @@ class _ButtonsGroupState extends State<ButtonsGroup> {
             ),
           ),
           // Upload action button
-          FloatingActionButton(
-            backgroundColor: Colors.black38,
-            onPressed: widget.updateImageView,
-            child: Icon(
-              Icons.arrow_upward_sharp,
-              color: Colors.white,
-            ),
-          ),
+          // FloatingActionButton(
+          //   backgroundColor: Colors.black38,
+          //   onPressed: widget.updateImageView,
+          //   child: Icon(
+          //     Icons.arrow_upward_sharp,
+          //     color: Colors.white,
+          //   ),
+          // ),
         ],
       ),
     );
