@@ -1,7 +1,7 @@
 import 'dart:developer';
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:portfolio/widgets/image_picker.dart';
+import 'package:portfolio/widgets/server_connection.dart';
 // Widgets Import
 import '../widgets/sliders.dart';
 import '../widgets/buttons.dart';

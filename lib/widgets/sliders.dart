@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:portfolio/models/text_formatter.dart';
+import 'package:portfolio/widgets/numeric_updown.dart';
 
 class Sliders extends StatefulWidget {
   @override
@@ -29,6 +30,7 @@ class _SlidersState extends State<Sliders> {
                 min: 0,
                 max: 8,
                 label: "$_depthSlider",
+                divisions: 8,
                 onChanged: (value) {
                   setState(() {
                     _depthSlider = value;
@@ -50,6 +52,7 @@ class _SlidersState extends State<Sliders> {
                 min: 1,
                 max: 30,
                 label: "$_detailSlider",
+                divisions: 29,
                 onChanged: (value) {
                   setState(() {
                     _detailSlider = value;
@@ -69,37 +72,13 @@ class _SlidersState extends State<Sliders> {
               width: 500.0,
               child: Column(
                 children: [
-                  Container(
-                    child: Text(
-                      "ADVANCED OPTIONS",
-                      style: Theme.of(context).textTheme.bodyText2,
-                    ),
-                  ),
-                  Container(
-                    padding: EdgeInsets.only(top: 20.0),
-                    width: 250.0,
-                    height: 60.0,
-                    child: Container(
-                      decoration: BoxDecoration(
-                          border: Border.all(color: Colors.blueAccent)),
-                      child: TextFormField(
-                        inputFormatters: [
-                          SizeMultiplierTextFormatter(),
-                        ],
-                        keyboardType: TextInputType.number,
-                        style:
-                            TextStyle(color: Colors.white, letterSpacing: 2.0),
-                        decoration: InputDecoration(
-                          fillColor: Colors.amber,
-                          border: InputBorder.none,
-                        ),
-                        // helperStyle: Theme.of(context).textTheme.bodyText2,
-                        // helperText:
-                        //     "2.0 will return an image twice as large"),
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
-                  ),
+                  // Container(
+                  //   child: Text(
+                  //     "ADVANCED OPTIONS",
+                  //     style: Theme.of(context).textTheme.bodyText2,
+                  //   ),
+                  // ),
+                  NumericUpDown(),
                 ],
               ),
             ),
