@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 // Routes import
 import 'routes/quadtree_view.dart';
 
@@ -24,6 +25,32 @@ class MyApp extends StatelessWidget {
             fontSize: 60.0,
             color: Colors.white,
             fontWeight: FontWeight.w500,
+          ),
+          headline1: GoogleFonts.raleway(
+            fontWeight: FontWeight.w700,
+            color: Colors.white,
+            fontSize: 35.0,
+            letterSpacing: 1.0,
+          ),
+          headline5: GoogleFonts.raleway(
+            fontWeight: FontWeight.w700,
+            color: Colors.blue,
+            fontSize: 13.0,
+            letterSpacing: 1.0,
+          ),
+          headline2: GoogleFonts.raleway(
+            fontWeight: FontWeight.w900,
+            color: Colors.white12,
+            fontSize: 35.0,
+            letterSpacing: 1.0,
+          ),
+          bodyText1: GoogleFonts.raleway(
+            color: Colors.white,
+            fontSize: 13.0,
+          ),
+          headline6: GoogleFonts.raleway(
+            color: Colors.white,
+            fontSize: 15.0,
           ),
         ),
       ),

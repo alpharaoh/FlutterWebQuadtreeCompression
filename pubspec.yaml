@@ -24,6 +24,8 @@ dependencies:
   http: ^0.13.1
   image: ^3.0.2
   intl: ^0.17.0
+  google_fonts: ^2.0.0
+  url_launcher: ^6.0.3
   flutter:
     sdk: flutter
 
@@ -53,6 +55,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/images/
+    - assets/images/example_image.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
@@ -65,7 +68,10 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
+  fonts:
+   - family:  AppIcons
+     fonts:
+      - asset: assets/fonts/AppIcons.ttf
   #   - family: Schyler
   #     fonts:
   #       - asset: fonts/Schyler-Regular.ttf

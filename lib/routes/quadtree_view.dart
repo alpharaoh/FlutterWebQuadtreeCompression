@@ -1,6 +1,8 @@
 import 'dart:developer';
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:portfolio/widgets/credits.dart';
+import 'package:portfolio/widgets/helper_text.dart';
 import 'package:portfolio/widgets/server_connection.dart';
 // Widgets Import
 import '../widgets/sliders.dart';
@@ -78,15 +80,17 @@ class _SidebarWidgetState extends State<SidebarWidget> {
       width: 420.0,
       color: Colors.black54,
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        //mainAxisAlignment: MainAxisAlignment.start,
         children: [
+          QuadTreeHelp(),
+          Credits(),
           // Slider
           Sliders(),
           ImagePickerWidget(
               imageView: widget.imageViewObj,
               updateImageView: widget.updateImageHandler),
           // Container for buttons
-          ButtonsGroup(), // Pass in function to Buttons class
+          ButtonsGroup(),
         ],
       ),
     );

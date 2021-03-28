@@ -29,28 +29,30 @@ class _NumericUpDownState extends State<NumericUpDown> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 300.0,
+      height: 50.0,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Container(
+            margin: EdgeInsets.only(left: 15),
             child: Text(
               "SIZE MUTLIPLIER",
               style: Theme.of(context).textTheme.bodyText2,
             ),
           ),
           Container(
-            width: 100.0,
+            width: 60.0,
+            margin: EdgeInsets.only(bottom: 10.0),
             child: TextFormField(
               style: TextStyle(
                 color: Colors.white54,
-                fontSize: 15.0,
-                fontWeight: FontWeight.w500,
-                letterSpacing: 6.0,
+                // fontSize: 15.0,
+                // fontWeight: FontWeight.w500,
+                // letterSpacing: 6.0,
               ),
               //initialValue: _sizeMultValue.toString(),
               controller: textController,
-              textAlign: TextAlign.right,
+              textAlign: TextAlign.center,
               keyboardType: TextInputType.number,
               decoration: InputDecoration(
                   // filled: true,
@@ -61,7 +63,7 @@ class _NumericUpDownState extends State<NumericUpDown> {
                   errorBorder: InputBorder.none,
                   disabledBorder: InputBorder.none,
                   contentPadding:
-                      EdgeInsets.only(left: 15, bottom: 11, top: 11, right: 15),
+                      EdgeInsets.only(left: 10, bottom: 10, top: 10, right: 10),
                   hintText: "1.0"),
             ),
           ),

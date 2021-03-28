@@ -16,6 +16,7 @@ class _ImagePickerButtonsState extends State<ImagePickerButtons> {
   Widget build(BuildContext context) {
     return Container(
       //color: Colors.amber,
+      padding: EdgeInsets.only(top: 40.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [

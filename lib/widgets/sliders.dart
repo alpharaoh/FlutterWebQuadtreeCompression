@@ -12,6 +12,7 @@ class _SlidersState extends State<Sliders> {
   // Slider values
   double _depthSlider = 7.0;
   double _detailSlider = 10.0;
+  double _maxDepthSlider = 8.0;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +20,7 @@ class _SlidersState extends State<Sliders> {
       child: // Container for sliders
           Container(
         alignment: Alignment.center,
-        padding: EdgeInsets.only(top: 80.0),
+        padding: EdgeInsets.only(top: 10.0),
         child: Column(
           children: [
             // Depth slider
@@ -67,7 +68,7 @@ class _SlidersState extends State<Sliders> {
               ),
             ),
             Container(
-              margin: EdgeInsets.only(top: 80.0),
+              //margin: EdgeInsets.only(top: 80.0),
               padding: EdgeInsets.all(20.0),
               width: 500.0,
               child: Column(
@@ -80,6 +81,27 @@ class _SlidersState extends State<Sliders> {
                   // ),
                   NumericUpDown(),
                 ],
+              ),
+            ),
+            Container(
+              width: 300.0,
+              child: Slider(
+                value: _maxDepthSlider,
+                min: 1,
+                max: 10,
+                label: "$_maxDepthSlider",
+                divisions: 9,
+                onChanged: (value) {
+                  setState(() {
+                    _maxDepthSlider = value;
+                  });
+                },
+              ),
+            ),
+            Container(
+              child: Text(
+                "MAX DEPTH",
+                style: Theme.of(context).textTheme.bodyText2,
               ),
             ),
           ],

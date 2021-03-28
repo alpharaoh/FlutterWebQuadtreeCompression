@@ -8,7 +8,7 @@ import 'dart:convert';
 import 'dart:async';
 
 import 'package:portfolio/models/displayed_image.dart';
-import 'package:portfolio/widgets/image_pick.dart';
+import 'package:portfolio/widgets/image_picker.dart';
 
 class ImagePickerWidget extends StatefulWidget {
   final CurrentDisplayedImage imageView;
@@ -60,10 +60,10 @@ class _ImageHolderState extends State<ImagePickerWidget> {
         contentType: new MediaType("application/json", "multipart/form-data"),
         filename: _file_name));
 
-    request.files.add(http.MultipartFile.fromString("depth", "6"));
-    request.files.add(http.MultipartFile.fromString("detail", "30"));
+    request.files.add(http.MultipartFile.fromString("depth", "7"));
+    request.files.add(http.MultipartFile.fromString("detail", "15"));
     request.files.add(http.MultipartFile.fromString("max_depth", "8"));
-    request.files.add(http.MultipartFile.fromString("size_mult", "0.5"));
+    request.files.add(http.MultipartFile.fromString("size_mult", "1"));
 
     request.send().then((response) async {
       // Handle and output response
