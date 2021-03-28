@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:portfolio/models/text_formatter.dart';
+import 'package:portfolio/models/quadtree_settings.dart';
 import 'package:portfolio/widgets/numeric_updown.dart';
 
 class Sliders extends StatefulWidget {
+  final QuadTreeSettings settings;
+
+  Sliders({@required this.settings});
+
   @override
   _SlidersState createState() => _SlidersState();
 }
 
 class _SlidersState extends State<Sliders> {
-  // Slider values
-  double _depthSlider = 7.0;
-  double _detailSlider = 10.0;
-  double _maxDepthSlider = 8.0;
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -27,14 +26,14 @@ class _SlidersState extends State<Sliders> {
             Container(
               width: 300.0,
               child: Slider(
-                value: _depthSlider,
+                value: widget.settings.depthValue,
                 min: 0,
                 max: 8,
-                label: "$_depthSlider",
+                label: (widget.settings.depthValue).toString(),
                 divisions: 8,
                 onChanged: (value) {
                   setState(() {
-                    _depthSlider = value;
+                    widget.settings.changeDepthValue(value);
                   });
                 },
               ),
@@ -49,51 +48,44 @@ class _SlidersState extends State<Sliders> {
             Container(
               width: 300.0,
               child: Slider(
-                value: _detailSlider,
+                value: widget.settings.detailValue,
                 min: 1,
                 max: 30,
-                label: "$_detailSlider",
+                label: (widget.settings.detailValue).toString(),
                 divisions: 29,
                 onChanged: (value) {
                   setState(() {
-                    _detailSlider = value;
+                    widget.settings.changeDetailValue(value);
                   });
                 },
               ),
             ),
             Container(
               child: Text(
-                "DETAIL",
+                "DETAIL THRESHOLD",
                 style: Theme.of(context).textTheme.bodyText2,
               ),
             ),
             Container(
-              //margin: EdgeInsets.only(top: 80.0),
               padding: EdgeInsets.all(20.0),
               width: 500.0,
               child: Column(
                 children: [
-                  // Container(
-                  //   child: Text(
-                  //     "ADVANCED OPTIONS",
-                  //     style: Theme.of(context).textTheme.bodyText2,
-                  //   ),
-                  // ),
-                  NumericUpDown(),
+                  NumericUpDown(settings: widget.settings),
                 ],
               ),
             ),
             Container(
               width: 300.0,
               child: Slider(
-                value: _maxDepthSlider,
+                value: widget.settings.maxDepthValue,
                 min: 1,
                 max: 10,
-                label: "$_maxDepthSlider",
+                label: (widget.settings.maxDepthValue).toString(),
                 divisions: 9,
                 onChanged: (value) {
                   setState(() {
-                    _maxDepthSlider = value;
+                    widget.settings.changeMaxDepthValue(value);
                   });
                 },
               ),

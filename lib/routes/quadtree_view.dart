@@ -1,6 +1,7 @@
 import 'dart:developer';
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:portfolio/models/quadtree_settings.dart';
 import 'package:portfolio/widgets/credits.dart';
 import 'package:portfolio/widgets/helper_text.dart';
 import 'package:portfolio/widgets/server_connection.dart';
@@ -23,8 +24,11 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
+  // Image holder
   CurrentDisplayedImage imageView = CurrentDisplayedImage();
   Image imageToViewer;
+  // QuadTree settings
+  QuadTreeSettings settings = QuadTreeSettings();
 
   // Methods
   void changeImageSrc() {
@@ -47,8 +51,10 @@ class _HomeViewState extends State<HomeView> {
                 ImageHolder(imageToViewer),
                 // Right
                 SidebarWidget(
-                    updateImageHandler: changeImageSrc,
-                    imageViewObj: imageView),
+                  updateImageHandler: changeImageSrc,
+                  imageViewObj: imageView,
+                  settings: settings,
+                )
               ],
             ),
           ],
@@ -62,10 +68,14 @@ class _HomeViewState extends State<HomeView> {
 class SidebarWidget extends StatefulWidget {
   final Function updateImageHandler;
   final CurrentDisplayedImage imageViewObj;
+  final QuadTreeSettings settings;
 
   // Pass in function
-  SidebarWidget(
-      {@required this.updateImageHandler, @required this.imageViewObj});
+  SidebarWidget({
+    @required this.updateImageHandler,
+    @required this.imageViewObj,
+    @required this.settings,
+  });
 
   @override
   _SidebarWidgetState createState() => _SidebarWidgetState();
@@ -85,10 +95,14 @@ class _SidebarWidgetState extends State<SidebarWidget> {
           QuadTreeHelp(),
           Credits(),
           // Slider
-          Sliders(),
+          Sliders(
+            settings: widget.settings,
+          ),
           ImagePickerWidget(
-              imageView: widget.imageViewObj,
-              updateImageView: widget.updateImageHandler),
+            imageView: widget.imageViewObj,
+            updateImageView: widget.updateImageHandler,
+            settings: widget.settings,
+          ),
           // Container for buttons
           ButtonsGroup(),
         ],

@@ -9,7 +9,7 @@ class _QuadTreeHelpState extends State<QuadTreeHelp> {
   String _textContent1 =
       "Quadtrees are a type of tree data structure where each node in the tree has four children. For image compression we can use quadtrees to divide two-dimensional spaces into smaller and smaller quadrants. These quadrants will hold data for it's average colour, current depth in the quadtree and it's colour 'detail'.";
   String _textContent2 =
-      "The quadtree will stop dividing once we reach a maximum depth or detail threshold. With this data we can recreate the image filling in the quadrants with their average colour";
+      "The quadtree will stop dividing once we reach a maximum depth or detail threshold. With this data we can recreate the image filling in the quadrants with their average colour.";
 
   @override
   Widget build(BuildContext context) {
@@ -22,9 +22,9 @@ class _QuadTreeHelpState extends State<QuadTreeHelp> {
             children: [
               // Image
               Container(
-                margin: EdgeInsets.only(left: 30.0),
-                height: 200.0,
-                width: 200.0,
+                margin: EdgeInsets.only(left: 40.0),
+                height: 170.0,
+                width: 170.0,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   image: DecorationImage(
@@ -51,24 +51,24 @@ class _QuadTreeHelpState extends State<QuadTreeHelp> {
           ),
           Container(
             padding: EdgeInsets.only(
-                right: 30.0, left: 30.0, top: 30.0, bottom: 20.0),
+                right: 50.0, left: 50.0, top: 30.0, bottom: 20.0),
             child: Text(
               _textContent1,
-              textAlign: TextAlign.right,
+              // textAlign: TextAlign.right,
               style: Theme.of(context).textTheme.bodyText1,
             ),
           ),
           Container(
-            padding: EdgeInsets.only(right: 30.0, left: 30.0),
+            padding: EdgeInsets.only(right: 50.0, left: 50.0),
             child: Text(
               _textContent2,
-              textAlign: TextAlign.right,
+              // textAlign: TextAlign.right,
               style: Theme.of(context).textTheme.bodyText1,
             ),
           ),
           Container(
             padding: EdgeInsets.only(
-              top: 20.0,
+              top: 30.0,
               bottom: 20.0,
             ),
             child: Divider(

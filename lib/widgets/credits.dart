@@ -20,7 +20,7 @@ class _CreditsState extends State<Credits> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        padding: EdgeInsets.only(bottom: 10.0),
+        padding: EdgeInsets.only(bottom: 10.0, left: 10.0),
         child: Column(
           children: [
             Row(

@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/models/quadtree_settings.dart';
 
 class NumericUpDown extends StatefulWidget {
+  final QuadTreeSettings settings;
+
+  NumericUpDown({@required this.settings});
+
   @override
   _NumericUpDownState createState() => _NumericUpDownState();
 }
@@ -8,21 +13,21 @@ class NumericUpDown extends StatefulWidget {
 class _NumericUpDownState extends State<NumericUpDown> {
   var textController = new TextEditingController();
 
-  double _sizeMultValue = 1.0;
-
   void upCounter() {
     setState(() {
-      _sizeMultValue += 0.01;
+      widget.settings.changeSizeMultValue(widget.settings.sizeMultValue + 0.01);
       textController.text =
-          double.parse(_sizeMultValue.toStringAsFixed(2)).toString();
+          double.parse(widget.settings.sizeMultValue.toStringAsFixed(2))
+              .toString();
     });
   }
 
   void downCounter() {
     setState(() {
-      _sizeMultValue -= 0.01;
+      widget.settings.changeSizeMultValue(widget.settings.sizeMultValue - 0.01);
       textController.text =
-          double.parse(_sizeMultValue.toStringAsFixed(2)).toString();
+          double.parse(widget.settings.sizeMultValue.toStringAsFixed(2))
+              .toString();
     });
   }
 
@@ -52,6 +57,8 @@ class _NumericUpDownState extends State<NumericUpDown> {
               ),
               //initialValue: _sizeMultValue.toString(),
               controller: textController,
+              onChanged: (val) =>
+                  widget.settings.changeSizeMultValue(double.parse(val)),
               textAlign: TextAlign.center,
               keyboardType: TextInputType.number,
               decoration: InputDecoration(

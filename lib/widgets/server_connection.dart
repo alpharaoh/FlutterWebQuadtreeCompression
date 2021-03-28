@@ -8,13 +8,19 @@ import 'dart:convert';
 import 'dart:async';
 
 import 'package:portfolio/models/displayed_image.dart';
+import 'package:portfolio/models/quadtree_settings.dart';
 import 'package:portfolio/widgets/image_picker.dart';
+import 'package:portfolio/widgets/sliders.dart';
 
 class ImagePickerWidget extends StatefulWidget {
   final CurrentDisplayedImage imageView;
   final Function updateImageView;
+  final QuadTreeSettings settings;
 
-  ImagePickerWidget({@required this.imageView, @required this.updateImageView});
+  ImagePickerWidget(
+      {@required this.imageView,
+      @required this.updateImageView,
+      @required this.settings});
 
   @override
   _ImageHolderState createState() => _ImageHolderState();
@@ -60,10 +66,16 @@ class _ImageHolderState extends State<ImagePickerWidget> {
         contentType: new MediaType("application/json", "multipart/form-data"),
         filename: _file_name));
 
-    request.files.add(http.MultipartFile.fromString("depth", "7"));
-    request.files.add(http.MultipartFile.fromString("detail", "15"));
-    request.files.add(http.MultipartFile.fromString("max_depth", "8"));
-    request.files.add(http.MultipartFile.fromString("size_mult", "1"));
+    print(widget.settings.sizeMultValue);
+
+    request.files.add(http.MultipartFile.fromString(
+        "depth", widget.settings.depthValue.toString()));
+    request.files.add(http.MultipartFile.fromString(
+        "detail", widget.settings.detailValue.toString()));
+    request.files.add(http.MultipartFile.fromString(
+        "max_depth", widget.settings.maxDepthValue.toString()));
+    request.files.add(http.MultipartFile.fromString(
+        "size_mult", widget.settings.sizeMultValue.toString()));
 
     request.send().then((response) async {
       // Handle and output response

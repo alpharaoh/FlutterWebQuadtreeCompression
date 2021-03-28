@@ -35,6 +35,7 @@ class _ImagePickerButtonsState extends State<ImagePickerButtons> {
                   Text(
                     "SELECT IMAGE",
                     style: Theme.of(context).textTheme.bodyText2,
+                    textAlign: TextAlign.center,
                   ),
                 ],
               ),
