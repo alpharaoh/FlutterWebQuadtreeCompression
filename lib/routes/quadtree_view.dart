@@ -1,5 +1,3 @@
-import 'dart:developer';
-import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:portfolio/models/quadtree_settings.dart';
 import 'package:portfolio/widgets/credits.dart';
@@ -11,7 +9,6 @@ import '../widgets/buttons.dart';
 import '../widgets/image_holder.dart';
 // Models Import
 import '../models/displayed_image.dart';
-import 'package:flutter/material.dart';
 
 // Home View
 class HomeView extends StatefulWidget {

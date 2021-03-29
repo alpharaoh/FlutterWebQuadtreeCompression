@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-// Models import
-import '../models/displayed_image.dart';
 
 class ButtonsGroup extends StatefulWidget {
   // final Function updateImageView;

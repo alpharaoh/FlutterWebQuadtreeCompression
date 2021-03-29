@@ -10,7 +10,6 @@ import 'dart:async';
 import 'package:portfolio/models/displayed_image.dart';
 import 'package:portfolio/models/quadtree_settings.dart';
 import 'package:portfolio/widgets/image_picker.dart';
-import 'package:portfolio/widgets/sliders.dart';
 
 class ImagePickerWidget extends StatefulWidget {
   final CurrentDisplayedImage imageView;
@@ -66,8 +65,7 @@ class _ImageHolderState extends State<ImagePickerWidget> {
         contentType: new MediaType("application/json", "multipart/form-data"),
         filename: _file_name));
 
-    print(widget.settings.sizeMultValue);
-
+    // Add settings to form
     request.files.add(http.MultipartFile.fromString(
         "depth", widget.settings.depthValue.toString()));
     request.files.add(http.MultipartFile.fromString(

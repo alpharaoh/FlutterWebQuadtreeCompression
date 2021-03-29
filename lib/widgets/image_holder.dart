@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
@@ -17,21 +15,113 @@ class _ImageHolderState extends State<ImageHolder> {
   final String _placehold =
       "https://static.thenounproject.com/png/140281-200.png";
 
+  void zoomInViewer() {}
+
+  void zoomOutViewer() {}
+
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: MouseRegion(
-        cursor: SystemMouseCursors.grab,
-        child: Container(
-          color: Colors.black38,
-          width: 1500.0,
-          height: MediaQuery.of(context).size.height,
-          // If current image is not present, we display placeholder image, otherwise we get current image
-          child: (widget._currentImage == null)
-              ? Image.network(_placehold)
-              : widget._currentImage,
+      width: 1500.0,
+      color: Colors.black38,
+      child: Stack(children: [
+        MouseRegion(
+          cursor: SystemMouseCursors.grab,
+          child: Center(
+            child: InteractiveViewer(
+              boundaryMargin: EdgeInsets.all(100),
+              minScale: 0.1,
+              maxScale: 3,
+              child: Container(
+                height: MediaQuery.of(context).size.height,
+                // If current image is not present, we display placeholder image, otherwise we get current image
+                child: (widget._currentImage == null)
+                    ? Image.network(_placehold)
+                    : widget._currentImage,
+              ),
+            ),
+          ),
         ),
-      ),
+        Container(
+          padding: EdgeInsets.all(30.0),
+          alignment: Alignment.topRight,
+          height: 170.0,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Container(
+                width: 50.0,
+                height: 50.0,
+                child: FloatingActionButton(
+                  onPressed: () {},
+                  child: Icon(
+                    Icons.zoom_in_sharp,
+                    color: Colors.white,
+                    size: 30.0,
+                  ),
+                  backgroundColor: Colors.black54,
+                ),
+              ),
+              Container(
+                //padding: EdgeInsets.only(top: 20.0),
+                width: 50.0,
+                height: 50.0,
+                child: FloatingActionButton(
+                  onPressed: () {},
+                  child: Icon(
+                    Icons.zoom_out_sharp,
+                    color: Colors.white,
+                    size: 30.0,
+                  ),
+                  backgroundColor: Colors.black54,
+                ),
+              ),
+            ],
+          ),
+        ),
+        // Positioned.fill(
+        //   child: Align(
+        //     alignment: Alignment.bottomCenter,
+        //     child: Container(
+        //       width: 400.0,
+        //       height: 100.0,
+        //       color: Colors.black38,
+        //       child: Container(
+        //         padding: EdgeInsets.all(10.0),
+        //         child: Row(
+        //           mainAxisAlignment: MainAxisAlignment.center,
+        //           children: [
+        //             Image(
+        //               height: 80.0,
+        //               width: 80.0,
+        //               image: AssetImage("images/image_icon.png"),
+        //               fit: BoxFit.cover,
+        //             ),
+        //             Image(
+        //               height: 80.0,
+        //               width: 80.0,
+        //               image: AssetImage("images/image_icon.png"),
+        //               fit: BoxFit.cover,
+        //             ),
+        //             Image(
+        //               height: 80.0,
+        //               width: 80.0,
+        //               image: AssetImage("images/image_icon.png"),
+        //               fit: BoxFit.cover,
+        //             ),
+        //             Image(
+        //               height: 80.0,
+        //               width: 80.0,
+        //               image: AssetImage("images/image_icon.png"),
+        //               fit: BoxFit.cover,
+        //             ),
+        //           ],
+        //         ),
+        //       ),
+        //     ),
+        //   ),
+        // ),
+      ]),
     );
   }
 }
