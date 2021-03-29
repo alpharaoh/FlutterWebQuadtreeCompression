@@ -47,15 +47,10 @@ class _NumericUpDownState extends State<NumericUpDown> {
           ),
           Container(
             width: 60.0,
-            margin: EdgeInsets.only(bottom: 10.0),
             child: TextFormField(
               style: TextStyle(
                 color: Colors.white54,
-                // fontSize: 15.0,
-                // fontWeight: FontWeight.w500,
-                // letterSpacing: 6.0,
               ),
-              //initialValue: _sizeMultValue.toString(),
               controller: textController,
               onChanged: (val) =>
                   widget.settings.changeSizeMultValue(double.parse(val)),

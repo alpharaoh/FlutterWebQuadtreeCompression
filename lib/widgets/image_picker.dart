@@ -2,10 +2,8 @@ import 'package:flutter/material.dart';
 
 class ImagePickerButtons extends StatefulWidget {
   final Function startWebFilePicker;
-  final Function makeRequest;
 
-  ImagePickerButtons(
-      {@required this.startWebFilePicker, @required this.makeRequest});
+  ImagePickerButtons({@required this.startWebFilePicker});
 
   @override
   _ImagePickerButtonsState createState() => _ImagePickerButtonsState();
@@ -15,8 +13,7 @@ class _ImagePickerButtonsState extends State<ImagePickerButtons> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      //color: Colors.amber,
-      padding: EdgeInsets.only(top: 40.0),
+      padding: EdgeInsets.only(top: 30.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -38,20 +35,6 @@ class _ImagePickerButtonsState extends State<ImagePickerButtons> {
                     textAlign: TextAlign.center,
                   ),
                 ],
-              ),
-            ),
-          ),
-          Container(
-            width: 40.0,
-            height: 40.0,
-            child: OutlinedButton(
-              style: ButtonStyle(
-                foregroundColor: MaterialStateProperty.all<Color>(Colors.blue),
-              ),
-              onPressed: () => widget.makeRequest(),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [Icon(Icons.upload_file)],
               ),
             ),
           ),

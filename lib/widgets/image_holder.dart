@@ -89,7 +89,7 @@ class _ImageHolderState extends State<ImageHolder> {
         //       child: Container(
         //         padding: EdgeInsets.all(10.0),
         //         child: Row(
-        //           mainAxisAlignment: MainAxisAlignment.center,
+        //           mainAxisAlignment: MainAxisAlignment.spaceAround,
         //           children: [
         //             Image(
         //               height: 80.0,

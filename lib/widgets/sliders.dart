@@ -12,13 +12,16 @@ class Sliders extends StatefulWidget {
 }
 
 class _SlidersState extends State<Sliders> {
+  bool showLines = false;
+  bool gif = false;
+
   @override
   Widget build(BuildContext context) {
     return Container(
       child: // Container for sliders
           Container(
         alignment: Alignment.center,
-        padding: EdgeInsets.only(top: 10.0),
+        // padding: EdgeInsets.only(top: 0.0),
         child: Column(
           children: [
             // Depth slider
@@ -66,7 +69,7 @@ class _SlidersState extends State<Sliders> {
               ),
             ),
             Container(
-              padding: EdgeInsets.all(20.0),
+              padding: EdgeInsets.only(top: 25.0, bottom: 10.0),
               width: 500.0,
               child: Column(
                 children: [
@@ -93,6 +96,43 @@ class _SlidersState extends State<Sliders> {
               child: Text(
                 "MAX DEPTH",
                 style: Theme.of(context).textTheme.bodyText2,
+              ),
+            ),
+            Container(
+              width: 300.0,
+              margin: EdgeInsets.only(top: 20.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Row(
+                    children: [
+                      Text("GIF"),
+                      Checkbox(
+                        activeColor: Colors.blue,
+                        value: showLines,
+                        onChanged: (newValue) {
+                          setState(() {
+                            showLines = newValue;
+                          });
+                        },
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      Text("LINES"),
+                      Checkbox(
+                        activeColor: Colors.blue,
+                        value: gif,
+                        onChanged: (newValue) {
+                          setState(() {
+                            gif = newValue;
+                          });
+                        },
+                      ),
+                    ],
+                  ),
+                ],
               ),
             ),
           ],

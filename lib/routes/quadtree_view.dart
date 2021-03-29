@@ -101,7 +101,7 @@ class _SidebarWidgetState extends State<SidebarWidget> {
             settings: widget.settings,
           ),
           // Container for buttons
-          ButtonsGroup(),
+          // ButtonsGroup(),
         ],
       ),
     );

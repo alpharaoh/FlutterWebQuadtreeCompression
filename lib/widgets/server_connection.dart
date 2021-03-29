@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:http_parser/http_parser.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
@@ -9,6 +11,7 @@ import 'dart:async';
 
 import 'package:portfolio/models/displayed_image.dart';
 import 'package:portfolio/models/quadtree_settings.dart';
+import 'package:portfolio/widgets/buttons.dart';
 import 'package:portfolio/widgets/image_picker.dart';
 
 class ImagePickerWidget extends StatefulWidget {
@@ -30,6 +33,9 @@ class _ImageHolderState extends State<ImagePickerWidget> {
   List<int> _selectedFile;
   Uint8List _bytesData;
   String _file_name;
+  List<Image> images;
+  Uint8List imageBinaryData;
+  String file_type;
 
   void startWebFilePicker() async {
     // Open file picking
@@ -46,7 +52,7 @@ class _ImageHolderState extends State<ImagePickerWidget> {
       setState(() {
         _file_name = file.name;
       });
-
+      file_type = _file_name.split(".").last;
       // Encode files
       reader.onLoadEnd.listen((event) {
         _handleResult(reader.result);
@@ -74,6 +80,8 @@ class _ImageHolderState extends State<ImagePickerWidget> {
         "max_depth", widget.settings.maxDepthValue.toString()));
     request.files.add(http.MultipartFile.fromString(
         "size_mult", widget.settings.sizeMultValue.toString()));
+    request.files.add(http.MultipartFile.fromString("show_lines", "false"));
+    request.files.add(http.MultipartFile.fromString("is_jpg", "false"));
 
     request.send().then((response) async {
       // Handle and output response
@@ -86,6 +94,7 @@ class _ImageHolderState extends State<ImagePickerWidget> {
       var future = response.stream.toBytes();
       future.then((binary) {
         setState(() {
+          imageBinaryData = binary;
           // Get file from binary
           Image _recievedFile = Image.memory(binary);
           // Change displayed image to _recievedFile
@@ -106,7 +115,15 @@ class _ImageHolderState extends State<ImagePickerWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return ImagePickerButtons(
-        startWebFilePicker: startWebFilePicker, makeRequest: makeRequest);
+    return Column(
+      children: [
+        ImagePickerButtons(startWebFilePicker: startWebFilePicker),
+        ButtonsGroup(
+          makeRequest: makeRequest,
+          binary: imageBinaryData,
+          file_type: file_type,
+        )
+      ],
+    );
   }
 }

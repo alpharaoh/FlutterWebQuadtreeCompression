@@ -1,15 +1,33 @@
+import 'dart:convert';
+import 'dart:html';
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class ButtonsGroup extends StatefulWidget {
-  // final Function updateImageView;
+  final Function makeRequest;
+  final Uint8List binary;
+  final String file_type;
 
-  // ButtonsGroup({@required this.updateImageView});
+  ButtonsGroup(
+      {@required this.makeRequest,
+      @required this.binary,
+      @required this.file_type});
 
   @override
   _ButtonsGroupState createState() => _ButtonsGroupState();
 }
 
 class _ButtonsGroupState extends State<ButtonsGroup> {
+  void startDownload() {
+    final content = base64Encode(widget.binary);
+    final anchor = AnchorElement(
+        href: "data:application/octet-stream;charset=utf-16le;base64,$content")
+      ..setAttribute("download", "quadtree_image.${widget.file_type}")
+      ..click();
+  }
+
   downloadAlertDioalog(BuildContext context) {
     return showDialog(
         context: context,
@@ -19,27 +37,20 @@ class _ButtonsGroupState extends State<ButtonsGroup> {
             children: [
               // Download is ready pop up
               Container(
-                width: 130.0,
-                height: 30.0,
+                width: 200.0,
                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    SizedBox(
-                      width: 10.0,
-                    ),
                     Icon(
-                      Icons.arrow_downward_sharp,
+                      Icons.download_done_sharp,
                       color: Colors.white,
-                    ),
-                    SizedBox(
-                      width: 14.0,
                     ),
                     Text(
                       "DOWNLOAD IS READY",
-                      style: TextStyle(
-                        color: Colors.white,
-                        letterSpacing: 4.0,
-                        fontSize: 14.0,
-                      ),
+                      style: GoogleFonts.raleway(
+                          fontSize: 16.0,
+                          fontWeight: FontWeight.w700,
+                          letterSpacing: 2.0),
                     ),
                   ],
                 ),
@@ -54,10 +65,18 @@ class _ButtonsGroupState extends State<ButtonsGroup> {
     return Container(
       alignment: Alignment.bottomCenter,
       padding: EdgeInsets.only(bottom: 30.0, top: 30.0),
-      width: 150,
+      width: 220,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
+          FloatingActionButton(
+            backgroundColor: Colors.black38,
+            onPressed: () => widget.makeRequest(),
+            child: Icon(
+              Icons.upload_sharp,
+              color: Colors.white,
+            ),
+          ),
           // Reset action button
           FloatingActionButton(
             backgroundColor: Colors.black38,
@@ -72,6 +91,7 @@ class _ButtonsGroupState extends State<ButtonsGroup> {
             backgroundColor: Colors.black38,
             onPressed: () {
               downloadAlertDioalog(context);
+              startDownload();
             },
             child: Icon(
               Icons.download_sharp,

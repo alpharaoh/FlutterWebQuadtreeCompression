@@ -22,9 +22,9 @@ class _QuadTreeHelpState extends State<QuadTreeHelp> {
             children: [
               // Image
               Container(
-                margin: EdgeInsets.only(left: 40.0),
-                height: 170.0,
-                width: 170.0,
+                margin: EdgeInsets.only(left: 50.0),
+                height: 130.0,
+                width: 130.0,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   image: DecorationImage(
@@ -36,7 +36,7 @@ class _QuadTreeHelpState extends State<QuadTreeHelp> {
               // Title
               Container(
                 alignment: Alignment.centerRight,
-                padding: EdgeInsets.only(top: 60.0, right: 30.0),
+                padding: EdgeInsets.only(top: 30.0, right: 40.0),
                 child: Column(
                   children: [
                     Text(
