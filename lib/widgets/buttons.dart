@@ -10,10 +10,11 @@ class ButtonsGroup extends StatefulWidget {
   final Uint8List binary;
   final String file_type;
 
-  ButtonsGroup(
-      {@required this.makeRequest,
-      @required this.binary,
-      @required this.file_type});
+  ButtonsGroup({
+    @required this.makeRequest,
+    @required this.binary,
+    @required this.file_type,
+  });
 
   @override
   _ButtonsGroupState createState() => _ButtonsGroupState();
@@ -22,7 +23,7 @@ class ButtonsGroup extends StatefulWidget {
 class _ButtonsGroupState extends State<ButtonsGroup> {
   void startDownload() {
     final content = base64Encode(widget.binary);
-    final anchor = AnchorElement(
+    AnchorElement(
         href: "data:application/octet-stream;charset=utf-16le;base64,$content")
       ..setAttribute("download", "quadtree_image.${widget.file_type}")
       ..click();
@@ -90,8 +91,8 @@ class _ButtonsGroupState extends State<ButtonsGroup> {
           FloatingActionButton(
             backgroundColor: Colors.black38,
             onPressed: () {
-              downloadAlertDioalog(context);
               startDownload();
+              downloadAlertDioalog(context);
             },
             child: Icon(
               Icons.download_sharp,

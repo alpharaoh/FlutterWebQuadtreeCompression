@@ -3,6 +3,8 @@ class QuadTreeSettings {
   double detailValue = 15.0;
   double maxDepthValue = 8.0;
   double sizeMultValue = 1.0;
+  bool isGif = false;
+  bool showLines = true;
 
   List<String> getValues() {
     List<String> list = List<String>.filled(4, "");
@@ -10,6 +12,8 @@ class QuadTreeSettings {
     list[1] = detailValue.toString();
     list[2] = maxDepthValue.toString();
     list[3] = sizeMultValue.toString();
+    list[4] = isGif.toString();
+    list[5] = showLines.toString();
 
     return list;
   }
@@ -28,5 +32,13 @@ class QuadTreeSettings {
 
   void changeSizeMultValue(double val) {
     sizeMultValue = val;
+  }
+
+  void changeIsGifBool(bool val) {
+    isGif = val;
+  }
+
+  void changeShowLinesBool(bool val) {
+    showLines = val;
   }
 }

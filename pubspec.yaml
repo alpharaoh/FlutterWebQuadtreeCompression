@@ -25,6 +25,7 @@ dependencies:
   image: ^3.0.2
   intl: ^0.17.0
   google_fonts: ^2.0.0
+  flutter_spinkit: ^5.0.0
   url_launcher: ^6.0.3
   flutter:
     sdk: flutter

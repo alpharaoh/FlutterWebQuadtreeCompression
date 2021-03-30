@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:http_parser/http_parser.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
@@ -18,11 +16,16 @@ class ImagePickerWidget extends StatefulWidget {
   final CurrentDisplayedImage imageView;
   final Function updateImageView;
   final QuadTreeSettings settings;
+  final Function startSpinner;
+  final Function stopSpinner;
 
-  ImagePickerWidget(
-      {@required this.imageView,
-      @required this.updateImageView,
-      @required this.settings});
+  ImagePickerWidget({
+    @required this.imageView,
+    @required this.updateImageView,
+    @required this.settings,
+    @required this.startSpinner,
+    @required this.stopSpinner,
+  });
 
   @override
   _ImageHolderState createState() => _ImageHolderState();
@@ -52,7 +55,7 @@ class _ImageHolderState extends State<ImagePickerWidget> {
       setState(() {
         _file_name = file.name;
       });
-      file_type = _file_name.split(".").last;
+      file_type = (widget.settings.isGif) ? "gif" : _file_name.split(".").last;
       // Encode files
       reader.onLoadEnd.listen((event) {
         _handleResult(reader.result);
@@ -62,6 +65,7 @@ class _ImageHolderState extends State<ImagePickerWidget> {
   }
 
   Future makeRequest() async {
+    widget.startSpinner();
     // Set url to request
     Uri url = Uri.parse(_serverUrl);
     // Create a MultipartRequest
@@ -76,12 +80,14 @@ class _ImageHolderState extends State<ImagePickerWidget> {
         "depth", widget.settings.depthValue.toString()));
     request.files.add(http.MultipartFile.fromString(
         "detail", widget.settings.detailValue.toString()));
-    request.files.add(http.MultipartFile.fromString(
-        "max_depth", widget.settings.maxDepthValue.toString()));
+    // request.files.add(http.MultipartFile.fromString(
+    //     "max_depth", widget.settings.maxDepthValue.toString()));
     request.files.add(http.MultipartFile.fromString(
         "size_mult", widget.settings.sizeMultValue.toString()));
-    request.files.add(http.MultipartFile.fromString("show_lines", "false"));
-    request.files.add(http.MultipartFile.fromString("is_jpg", "false"));
+    request.files.add(http.MultipartFile.fromString(
+        "show_lines", widget.settings.showLines.toString()));
+    request.files.add(http.MultipartFile.fromString(
+        "is_gif", widget.settings.isGif.toString()));
 
     request.send().then((response) async {
       // Handle and output response
@@ -102,6 +108,8 @@ class _ImageHolderState extends State<ImagePickerWidget> {
           widget.updateImageView();
         });
       });
+
+      widget.stopSpinner();
     });
   }
 
