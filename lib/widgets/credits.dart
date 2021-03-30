@@ -20,9 +20,18 @@ class _CreditsState extends State<Credits> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        padding: EdgeInsets.only(bottom: 10.0, left: 10.0),
+        padding: EdgeInsets.only(bottom: 10.0, left: 10.0, top: 20.0),
         child: Column(
           children: [
+            // Container(
+            //   padding: EdgeInsets.only(
+            //     top: 30.0,
+            //     bottom: 20.0,
+            //   ),
+            //   child: Divider(
+            //     height: 10.0,
+            //   ),
+            // ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
@@ -54,7 +63,7 @@ class _CreditsState extends State<Credits> {
                             size: 20.0,
                           ),
                           shape: CircleBorder(),
-                          color: Colors.black45,
+                          color: Color.fromARGB(255, 6, 6, 6),
                           onPressed: () => _launchUrl(_githubUrl),
                         ),
                       ),
@@ -67,7 +76,7 @@ class _CreditsState extends State<Credits> {
                             size: 15.0,
                           ),
                           shape: CircleBorder(),
-                          color: Colors.black45,
+                          color: Color.fromARGB(255, 6, 6, 6),
                           onPressed: () => _launchUrl(_linkedinUrl),
                         ),
                       ),
@@ -80,7 +89,7 @@ class _CreditsState extends State<Credits> {
                             size: 15.0,
                           ),
                           shape: CircleBorder(),
-                          color: Colors.black45,
+                          color: Color.fromARGB(255, 6, 6, 6),
                           onPressed: () => _launchUrl(_twitterUrl),
                         ),
                       ),

@@ -113,26 +113,51 @@ class _SidebarWidgetState extends State<SidebarWidget> {
     return Container(
       // sidebar
       height: MediaQuery.of(context).size.height,
-      width: 420.0,
-      color: Colors.black54,
-      child: Column(
+      width: (320 +
+          MediaQuery.of(context).size.width *
+              0.05), //MediaQuery.of(context).size.width / 5 + 13.4,
+      color: Color.fromARGB(255, 20, 20, 20),
+      child: Stack(
         //mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          QuadTreeHelp(),
-          Credits(),
+          Positioned(
+            top: 0,
+            right: 0,
+            left: 0,
+            child: Container(
+              //height: MediaQuery.of(context).size.height,
+              child: Column(
+                children: [
+                  QuadTreeHelp(),
+                ],
+              ),
+            ),
+          ),
           // Slider
-          Sliders(
-            settings: widget.settings,
+          Positioned(
+            bottom: 0,
+            right: 0,
+            left: 0,
+            child: Container(
+              color: Color.fromARGB(255, 15, 15, 15),
+              //height: 511.0,
+              child: Column(
+                children: [
+                  Credits(),
+                  Sliders(
+                    settings: widget.settings,
+                  ),
+                  ImagePickerWidget(
+                    imageView: widget.imageViewObj,
+                    updateImageView: widget.updateImageHandler,
+                    settings: widget.settings,
+                    startSpinner: widget.startSpinner,
+                    stopSpinner: widget.stopSpinner,
+                  ),
+                ],
+              ),
+            ),
           ),
-          ImagePickerWidget(
-            imageView: widget.imageViewObj,
-            updateImageView: widget.updateImageHandler,
-            settings: widget.settings,
-            startSpinner: widget.startSpinner,
-            stopSpinner: widget.stopSpinner,
-          ),
-          // Container for buttons
-          // ButtonsGroup(),
         ],
       ),
     );

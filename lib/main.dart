@@ -15,11 +15,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData.dark().copyWith(
         textTheme: TextTheme(
-          bodyText2: TextStyle(
-            fontSize: 10.0,
+          bodyText2: GoogleFonts.raleway(
             color: Colors.white,
-            fontWeight: FontWeight.w500,
-            letterSpacing: 6.0,
+            fontWeight: FontWeight.w600,
+            letterSpacing: 4,
+            fontSize: 11.0,
           ),
           headline4: TextStyle(
             fontSize: 60.0,
@@ -46,10 +46,13 @@ class MyApp extends StatelessWidget {
           ),
           bodyText1: GoogleFonts.raleway(
             color: Colors.white,
+            fontWeight: FontWeight.w300,
+            letterSpacing: 0.5,
             fontSize: 13.0,
           ),
           headline6: GoogleFonts.raleway(
             color: Colors.white,
+            fontWeight: FontWeight.w300,
             fontSize: 15.0,
           ),
         ),

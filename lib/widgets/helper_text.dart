@@ -52,7 +52,7 @@ class _QuadTreeHelpState extends State<QuadTreeHelp> {
             ],
           ),
           Container(
-            padding: EdgeInsets.only(right: 50.0, left: 50.0, top: 25.0),
+            padding: EdgeInsets.only(right: 60.0, left: 60.0, top: 25.0),
             child: Text(
               _textContent1,
               // textAlign: TextAlign.right,
@@ -60,7 +60,7 @@ class _QuadTreeHelpState extends State<QuadTreeHelp> {
             ),
           ),
           Container(
-            padding: EdgeInsets.only(right: 50.0, left: 50.0, top: 25.0),
+            padding: EdgeInsets.only(right: 60.0, left: 60.0, top: 25.0),
             child: Text(
               _textContent2,
               // textAlign: TextAlign.right,
@@ -68,20 +68,11 @@ class _QuadTreeHelpState extends State<QuadTreeHelp> {
             ),
           ),
           Container(
-            padding: EdgeInsets.only(right: 50.0, left: 50.0, top: 25.0),
+            padding: EdgeInsets.only(right: 60.0, left: 60.0, top: 25.0),
             child: Text(
               _textContent3,
               // textAlign: TextAlign.right,
               style: Theme.of(context).textTheme.bodyText1,
-            ),
-          ),
-          Container(
-            padding: EdgeInsets.only(
-              top: 30.0,
-              bottom: 20.0,
-            ),
-            child: Divider(
-              height: 10.0,
             ),
           ),
         ],

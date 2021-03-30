@@ -16,10 +16,6 @@ class _SlidersState extends State<Sliders> {
   bool gif = false;
   double maxDepth = 9;
 
-  // void changeMaxDepth(val) {
-  //   setState(() {});
-  // }
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -82,31 +78,6 @@ class _SlidersState extends State<Sliders> {
                 ],
               ),
             ),
-            // Container(
-            //   width: 300.0,
-            //   child: Slider(
-            //     value: widget.settings.maxDepthValue,
-            //     min: 1,
-            //     max: 9,
-            //     label: (widget.settings.maxDepthValue).toString(),
-            //     divisions: 8,
-            //     onChanged: (value) {
-            //       setState(() {
-            //         widget.settings.changeMaxDepthValue(value);
-            //         if (widget.settings.depthValue > value) {
-            //           widget.settings.changeDepthValue(value);
-            //         }
-            //         maxDepth = value;
-            //       });
-            //     },
-            //   ),
-            // ),
-            // Container(
-            //   child: Text(
-            //     "MAX DEPTH",
-            //     style: Theme.of(context).textTheme.bodyText2,
-            //   ),
-            // ),
             Container(
               width: 300.0,
               margin: EdgeInsets.only(top: 10.0),

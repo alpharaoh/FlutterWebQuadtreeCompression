@@ -71,7 +71,7 @@ class _ButtonsGroupState extends State<ButtonsGroup> {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
           FloatingActionButton(
-            backgroundColor: Colors.black38,
+            backgroundColor: Color.fromARGB(255, 6, 6, 6),
             onPressed: () => widget.makeRequest(),
             child: Icon(
               Icons.upload_sharp,
@@ -80,7 +80,7 @@ class _ButtonsGroupState extends State<ButtonsGroup> {
           ),
           // Reset action button
           FloatingActionButton(
-            backgroundColor: Colors.black38,
+            backgroundColor: Color.fromARGB(255, 6, 6, 6),
             onPressed: () {},
             child: Icon(
               Icons.refresh_sharp,
@@ -89,7 +89,7 @@ class _ButtonsGroupState extends State<ButtonsGroup> {
           ),
           // Download action button
           FloatingActionButton(
-            backgroundColor: Colors.black38,
+            backgroundColor: Color.fromARGB(255, 6, 6, 6),
             onPressed: () {
               startDownload();
               downloadAlertDioalog(context);

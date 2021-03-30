@@ -18,15 +18,17 @@ class _ImagePickerButtonsState extends State<ImagePickerButtons> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Container(
-            width: 200.0,
+            width: 220.0,
             height: 40.0,
-            child: OutlinedButton(
+            child: TextButton(
               style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all<Color>(
+                    Color.fromARGB(255, 6, 6, 6)),
                 foregroundColor: MaterialStateProperty.all<Color>(Colors.blue),
               ),
               onPressed: () => widget.startWebFilePicker(),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Icon(Icons.add_sharp),
                   Text(

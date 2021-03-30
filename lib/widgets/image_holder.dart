@@ -15,15 +15,16 @@ class _ImageHolderState extends State<ImageHolder> {
   final String _placehold =
       "https://static.thenounproject.com/png/140281-200.png";
 
-  void zoomInViewer() {}
+  // void zoomInViewer() {}
 
-  void zoomOutViewer() {}
+  // void zoomOutViewer() {}
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 1500.0,
-      color: Colors.black38,
+      width: MediaQuery.of(context).size.width -
+          (320 + MediaQuery.of(context).size.width * 0.05),
+      color: Color.fromARGB(225, 25, 25, 25),
       child: Stack(children: [
         MouseRegion(
           cursor: SystemMouseCursors.grab,
@@ -42,43 +43,43 @@ class _ImageHolderState extends State<ImageHolder> {
             ),
           ),
         ),
-        Container(
-          padding: EdgeInsets.all(30.0),
-          alignment: Alignment.topRight,
-          height: 170.0,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Container(
-                width: 50.0,
-                height: 50.0,
-                child: FloatingActionButton(
-                  onPressed: () {},
-                  child: Icon(
-                    Icons.zoom_in_sharp,
-                    color: Colors.white,
-                    size: 30.0,
-                  ),
-                  backgroundColor: Colors.black54,
-                ),
-              ),
-              Container(
-                //padding: EdgeInsets.only(top: 20.0),
-                width: 50.0,
-                height: 50.0,
-                child: FloatingActionButton(
-                  onPressed: () {},
-                  child: Icon(
-                    Icons.zoom_out_sharp,
-                    color: Colors.white,
-                    size: 30.0,
-                  ),
-                  backgroundColor: Colors.black54,
-                ),
-              ),
-            ],
-          ),
-        ),
+        // Container(
+        //   padding: EdgeInsets.all(30.0),
+        //   alignment: Alignment.topRight,
+        //   height: 170.0,
+        //   child: Column(
+        //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        //     children: [
+        //       Container(
+        //         width: 50.0,
+        //         height: 50.0,
+        //         child: FloatingActionButton(
+        //           onPressed: () {},
+        //           child: Icon(
+        //             Icons.zoom_in_sharp,
+        //             color: Colors.white,
+        //             size: 30.0,
+        //           ),
+        //           backgroundColor: Colors.black54,
+        //         ),
+        //       ),
+        //       Container(
+        //         //padding: EdgeInsets.only(top: 20.0),
+        //         width: 50.0,
+        //         height: 50.0,
+        //         child: FloatingActionButton(
+        //           onPressed: () {},
+        //           child: Icon(
+        //             Icons.zoom_out_sharp,
+        //             color: Colors.white,
+        //             size: 30.0,
+        //           ),
+        //           backgroundColor: Colors.black54,
+        //         ),
+        //       ),
+        //     ],
+        //   ),
+        // ),
         // Positioned.fill(
         //   child: Align(
         //     alignment: Alignment.bottomCenter,
