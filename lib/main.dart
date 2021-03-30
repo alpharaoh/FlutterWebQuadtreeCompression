@@ -39,9 +39,9 @@ class MyApp extends StatelessWidget {
             letterSpacing: 1.0,
           ),
           headline2: GoogleFonts.raleway(
-            fontWeight: FontWeight.w900,
-            color: Colors.white12,
-            fontSize: 35.0,
+            fontWeight: FontWeight.w600,
+            color: Colors.white,
+            fontSize: 13.0,
             letterSpacing: 1.0,
           ),
           bodyText1: GoogleFonts.raleway(

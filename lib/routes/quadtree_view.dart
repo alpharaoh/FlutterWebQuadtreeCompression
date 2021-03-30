@@ -3,6 +3,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:portfolio/models/quadtree_settings.dart';
 import 'package:portfolio/widgets/credits.dart';
 import 'package:portfolio/widgets/helper_text.dart';
+import 'package:portfolio/widgets/initial_view.dart';
 import 'package:portfolio/widgets/server_connection.dart';
 // Widgets Import
 import '../widgets/sliders.dart';
@@ -56,30 +57,35 @@ class _HomeViewState extends State<HomeView> {
     return Scaffold(
       body: Stack(
         children: [
-          Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Row(
-                  children: [
-                    // Left
-                    ImageHolder(imageToViewer),
-                    // Right
-                    SidebarWidget(
-                      updateImageHandler: changeImageSrc,
-                      imageViewObj: imageView,
-                      settings: settings,
-                      startSpinner: startSpinner,
-                      stopSpinner: stopSpinner,
-                    )
+          Stack(
+            children: [
+              Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Row(
+                      children: [
+                        // Left
+                        ImageHolder(imageToViewer),
+                        // Right
+                        SidebarWidget(
+                          updateImageHandler: changeImageSrc,
+                          imageViewObj: imageView,
+                          settings: settings,
+                          startSpinner: startSpinner,
+                          stopSpinner: stopSpinner,
+                        )
+                      ],
+                    ),
                   ],
                 ),
-              ],
-            ),
+              ),
+              Center(
+                child: Spinner(spinnerVisible: spinnerVisible),
+              ),
+            ],
           ),
-          Center(
-            child: Spinner(spinnerVisible: spinnerVisible),
-          ),
+          InitialView(),
         ],
       ),
     );
