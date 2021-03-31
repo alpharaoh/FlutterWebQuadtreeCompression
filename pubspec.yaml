@@ -27,7 +27,8 @@ dependencies:
   google_fonts: ^2.0.0
   flutter_spinkit: ^5.0.0
   url_launcher: ^6.0.3
-  flutter:
+  auto_size_text: ^2.1.0
+  flutter: 
     sdk: flutter
 
 dependency_overrides:

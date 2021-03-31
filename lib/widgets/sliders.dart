@@ -21,9 +21,11 @@ class _SlidersState extends State<Sliders> {
     return Container(
       child: // Container for sliders
           Container(
+        // color: Colors.black,
         alignment: Alignment.center,
         // padding: EdgeInsets.only(top: 0.0),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             // Depth slider
             Container(
@@ -70,7 +72,9 @@ class _SlidersState extends State<Sliders> {
               ),
             ),
             Container(
-              padding: EdgeInsets.only(top: 25.0, bottom: 10.0),
+              padding: EdgeInsets.only(
+                  top: MediaQuery.of(context).size.height * 0.01,
+                  bottom: MediaQuery.of(context).size.height * 0.01),
               width: 500.0,
               child: Column(
                 children: [
@@ -80,7 +84,8 @@ class _SlidersState extends State<Sliders> {
             ),
             Container(
               width: 300.0,
-              margin: EdgeInsets.only(top: 10.0),
+              // margin: EdgeInsets.only(
+              //     top: MediaQuery.of(context).size.height * 0.00005),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [

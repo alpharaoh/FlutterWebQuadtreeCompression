@@ -65,7 +65,9 @@ class _ButtonsGroupState extends State<ButtonsGroup> {
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.bottomCenter,
-      padding: EdgeInsets.only(bottom: 30.0, top: 30.0),
+      padding: EdgeInsets.only(
+          bottom: MediaQuery.of(context).size.height * 0.02,
+          top: MediaQuery.of(context).size.height * 0.02),
       width: 220,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -91,6 +93,9 @@ class _ButtonsGroupState extends State<ButtonsGroup> {
           FloatingActionButton(
             backgroundColor: Color.fromARGB(255, 6, 6, 6),
             onPressed: () {
+              if (widget.binary == null) {
+                return;
+              }
               startDownload();
               downloadAlertDioalog(context);
             },

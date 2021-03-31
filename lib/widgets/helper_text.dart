@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:auto_size_text/auto_size_text.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class QuadTreeHelp extends StatefulWidget {
   @override
@@ -16,7 +18,7 @@ class _QuadTreeHelpState extends State<QuadTreeHelp> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(top: 30.0),
+      padding: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.02),
       child: Column(
         children: [
           Stack(
@@ -25,8 +27,8 @@ class _QuadTreeHelpState extends State<QuadTreeHelp> {
               // Image
               Container(
                 margin: EdgeInsets.only(left: 50.0),
-                height: 130.0,
-                width: 130.0,
+                height: MediaQuery.of(context).size.height * 0.13,
+                width: MediaQuery.of(context).size.height * 0.13,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   image: DecorationImage(
@@ -43,7 +45,12 @@ class _QuadTreeHelpState extends State<QuadTreeHelp> {
                   children: [
                     Text(
                       "QUADTREE\nCOMPRESSION",
-                      style: Theme.of(context).textTheme.headline1,
+                      style: GoogleFonts.raleway(
+                        fontWeight: FontWeight.w700,
+                        color: Colors.white,
+                        fontSize: MediaQuery.of(context).size.height * 0.035,
+                        letterSpacing: 1.0,
+                      ),
                       textAlign: TextAlign.right,
                     ),
                   ],
@@ -51,36 +58,91 @@ class _QuadTreeHelpState extends State<QuadTreeHelp> {
               ),
             ],
           ),
-          Column(
-            children: [
-              Container(
-                padding: EdgeInsets.only(right: 60.0, left: 60.0, top: 25.0),
-                child: Text(
-                  _textContent1,
-                  // textAlign: TextAlign.right,
-                  style: Theme.of(context).textTheme.bodyText1,
+          Container(
+            // color: Colors.black26,
+            height: MediaQuery.of(context).size.height - 620,
+            child: Container(
+              padding: EdgeInsets.only(
+                  right: 50.0,
+                  left: 50.0,
+                  top: MediaQuery.of(context).size.height * 0.025),
+              child: AutoSizeText(
+                _textContent1 + "\n\n" + _textContent2 + "\n\n" + _textContent3,
+                style: GoogleFonts.roboto(
+                  color: Colors.white,
+                  fontWeight: FontWeight.w300,
+                  letterSpacing: 0.5,
+                  fontSize: MediaQuery.of(context).size.height * 0.015,
                 ),
+                minFontSize: 8,
               ),
-              Container(
-                padding: EdgeInsets.only(right: 60.0, left: 60.0, top: 25.0),
-                child: Text(
-                  _textContent2,
-                  // textAlign: TextAlign.right,
-                  style: Theme.of(context).textTheme.bodyText1,
-                ),
-              ),
-              Container(
-                padding: EdgeInsets.only(right: 60.0, left: 60.0, top: 25.0),
-                child: Text(
-                  _textContent3,
-                  // textAlign: TextAlign.right,
-                  style: Theme.of(context).textTheme.bodyText1,
-                ),
-              ),
-            ],
+            ),
           ),
         ],
       ),
     );
   }
 }
+// child: Column(
+//   children: [
+//     Container(
+//       height: (MediaQuery.of(context).size.height - 700) / 2.5,
+//       // padding:
+//       //     EdgeInsets.only(top: 0.0), //right: 60.0, left: 60.0,
+//       child: AutoSizeText(
+//         _textContent1,
+//         // textAlign: TextAlign.right,
+//         style: Theme.of(context).textTheme.bodyText1,
+//       ),
+//     ),
+//     Container(
+//       height: (MediaQuery.of(context).size.height - 700) / 4,
+//       // padding:
+//       //     EdgeInsets.only(top: 25.0), //right: 60.0, left: 60.0,
+//       child: AutoSizeText(
+//         _textContent2,
+//         // textAlign: TextAlign.right,
+//         style: Theme.of(context).textTheme.bodyText1,
+//       ),
+//     ),
+//     Container(
+//       height: (MediaQuery.of(context).size.height - 700) / 6,
+//       // padding:
+//       //     EdgeInsets.only(top: 25.0), //right: 60.0, left: 60.0,
+//       child: AutoSizeText(
+//         _textContent3,
+//         // textAlign: TextAlign.right,
+//         style: Theme.of(context).textTheme.bodyText1,
+//       ),
+//     ),
+//   ],
+// ),
+
+// Column(
+//   children: [
+//     Container(
+//       padding: EdgeInsets.only(right: 60.0, left: 60.0, top: 25.0),
+//       child: Text(
+//         _textContent1,
+//         // textAlign: TextAlign.right,
+//         style: Theme.of(context).textTheme.bodyText1,
+//       ),
+//     ),
+//     Container(
+//       padding: EdgeInsets.only(right: 60.0, left: 60.0, top: 25.0),
+//       child: Text(
+//         _textContent2,
+//         // textAlign: TextAlign.right,
+//         style: Theme.of(context).textTheme.bodyText1,
+//       ),
+//     ),
+//     Container(
+//       padding: EdgeInsets.only(right: 60.0, left: 60.0, top: 25.0),
+//       child: Text(
+//         _textContent3,
+//         // textAlign: TextAlign.right,
+//         style: Theme.of(context).textTheme.bodyText1,
+//       ),
+//     ),
+//   ],
+// ),

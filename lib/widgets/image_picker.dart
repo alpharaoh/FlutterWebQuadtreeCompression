@@ -13,7 +13,7 @@ class _ImagePickerButtonsState extends State<ImagePickerButtons> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(top: 30.0),
+      padding: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.02),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [

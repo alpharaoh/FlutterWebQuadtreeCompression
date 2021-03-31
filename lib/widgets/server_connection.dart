@@ -65,6 +65,9 @@ class _ImageHolderState extends State<ImagePickerWidget> {
   }
 
   Future makeRequest() async {
+    if (_file_name == null) {
+      return;
+    }
     widget.startSpinner();
     // Set url to request
     Uri url = Uri.parse(_serverUrl);

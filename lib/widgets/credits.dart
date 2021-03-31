@@ -20,7 +20,10 @@ class _CreditsState extends State<Credits> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        padding: EdgeInsets.only(bottom: 10.0, left: 10.0, top: 20.0),
+        padding: EdgeInsets.only(
+            bottom: 10.0,
+            left: 10.0,
+            top: MediaQuery.of(context).size.height * 0.025),
         child: Column(
           children: [
             // Container(
@@ -98,9 +101,9 @@ class _CreditsState extends State<Credits> {
                 ),
               ],
             ),
-            Divider(
-              height: 10.0,
-            ),
+            // Divider(
+            //   height: 10.0,
+            // ),
           ],
         ));
   }

@@ -31,8 +31,8 @@ class _ImageHolderState extends State<ImageHolder> {
           child: Center(
             child: InteractiveViewer(
               boundaryMargin: EdgeInsets.all(100),
-              minScale: 0.1,
-              maxScale: 3,
+              minScale: 0.01,
+              maxScale: 10,
               child: Container(
                 height: MediaQuery.of(context).size.height,
                 // If current image is not present, we display placeholder image, otherwise we get current image
