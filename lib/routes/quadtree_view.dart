@@ -5,6 +5,7 @@ import 'package:portfolio/widgets/credits.dart';
 import 'package:portfolio/widgets/helper_text.dart';
 import 'package:portfolio/widgets/initial_view.dart';
 import 'package:portfolio/widgets/server_connection.dart';
+import 'package:portfolio/widgets/tips.dart';
 // Widgets Import
 import '../widgets/sliders.dart';
 import '../widgets/image_holder.dart';
@@ -85,7 +86,23 @@ class _HomeViewState extends State<HomeView> {
               ),
             ],
           ),
-          // InitialView(),
+          Tips(
+            tip: "The max amount of times the quadtree will split",
+          ),
+          // right: 350,
+          // top: MediaQuery.of(context).size.height - 360),
+          Tips(
+            tip:
+                "The detail needed for the quadtree to stop splitting (lower means higher detail)",
+          ),
+          // right: 350,
+          // top: MediaQuery.of(context).size.height - 300),
+          Tips(
+            tip: "If set to 2.0, the returned image will be twice as large",
+          ),
+          // right: 350,
+          // top: MediaQuery.of(context).size.height - 240),
+          // InitialView(), // Displays that the application should be viewed on a computer
         ],
       ),
     );

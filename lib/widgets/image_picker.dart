@@ -24,7 +24,8 @@ class _ImagePickerButtonsState extends State<ImagePickerButtons> {
               style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all<Color>(
                     Color.fromARGB(255, 6, 6, 6)),
-                foregroundColor: MaterialStateProperty.all<Color>(Colors.blue),
+                foregroundColor:
+                    MaterialStateProperty.all<Color>(Colors.blueAccent),
               ),
               onPressed: () => widget.startWebFilePicker(),
               child: Row(

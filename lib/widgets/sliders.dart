@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/models/quadtree_settings.dart';
 import 'package:portfolio/widgets/numeric_updown.dart';
+import 'package:portfolio/widgets/tips.dart';
 
 class Sliders extends StatefulWidget {
   final QuadTreeSettings settings;
@@ -28,20 +29,33 @@ class _SlidersState extends State<Sliders> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             // Depth slider
-            Container(
-              width: 300.0,
-              child: Slider(
-                value: widget.settings.depthValue,
-                min: 0,
-                max: maxDepth,
-                label: (widget.settings.depthValue).toString(),
-                divisions: maxDepth.toInt(),
-                onChanged: (value) {
-                  setState(() {
-                    widget.settings.changeDepthValue(value);
-                  });
-                },
-              ),
+            Stack(
+              children: [
+                Tips(
+                  tip: "The max amount of times the quadtree will split",
+                ),
+                Container(
+                  width: 300.0,
+                  child: SliderTheme(
+                    data: SliderThemeData(
+                      thumbColor: Colors.blue,
+                      activeTrackColor: Colors.blueAccent,
+                    ),
+                    child: Slider(
+                      value: widget.settings.depthValue,
+                      min: 0,
+                      max: maxDepth,
+                      label: (widget.settings.depthValue).toString(),
+                      divisions: maxDepth.toInt(),
+                      onChanged: (value) {
+                        setState(() {
+                          widget.settings.changeDepthValue(value);
+                        });
+                      },
+                    ),
+                  ),
+                ),
+              ],
             ),
             Container(
               child: Text(
@@ -52,17 +66,23 @@ class _SlidersState extends State<Sliders> {
             // Detail slider
             Container(
               width: 300.0,
-              child: Slider(
-                value: widget.settings.detailValue,
-                min: 1,
-                max: 30,
-                label: (widget.settings.detailValue).toString(),
-                divisions: 29,
-                onChanged: (value) {
-                  setState(() {
-                    widget.settings.changeDetailValue(value);
-                  });
-                },
+              child: SliderTheme(
+                data: SliderThemeData(
+                  thumbColor: Colors.blue,
+                  activeTrackColor: Colors.blueAccent,
+                ),
+                child: Slider(
+                  value: widget.settings.detailValue,
+                  min: 1,
+                  max: 30,
+                  label: (widget.settings.detailValue).toString(),
+                  divisions: 29,
+                  onChanged: (value) {
+                    setState(() {
+                      widget.settings.changeDetailValue(value);
+                    });
+                  },
+                ),
               ),
             ),
             Container(
