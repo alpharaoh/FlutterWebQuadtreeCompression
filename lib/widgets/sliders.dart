@@ -31,11 +31,9 @@ class _SlidersState extends State<Sliders> {
             // Depth slider
             Stack(
               children: [
-                Tips(
-                  tip: "The max amount of times the quadtree will split",
-                ),
                 Container(
-                  width: 300.0,
+                  padding: EdgeInsets.only(left: 50.0),
+                  width: 350.0,
                   child: SliderTheme(
                     data: SliderThemeData(
                       thumbColor: Colors.blue,
@@ -55,6 +53,12 @@ class _SlidersState extends State<Sliders> {
                     ),
                   ),
                 ),
+                Container(
+                  padding: EdgeInsets.only(left: 18.0, top: 5.0),
+                  child: Tips(
+                    tip: "The max amount of times the quadtree will split",
+                  ),
+                ),
               ],
             ),
             Container(
@@ -64,26 +68,38 @@ class _SlidersState extends State<Sliders> {
               ),
             ),
             // Detail slider
-            Container(
-              width: 300.0,
-              child: SliderTheme(
-                data: SliderThemeData(
-                  thumbColor: Colors.blue,
-                  activeTrackColor: Colors.blueAccent,
+            Stack(
+              children: [
+                Container(
+                  padding: EdgeInsets.only(left: 50.0),
+                  width: 350.0,
+                  // height: 70.0,
+                  child: SliderTheme(
+                    data: SliderThemeData(
+                      thumbColor: Colors.blue,
+                      activeTrackColor: Colors.blueAccent,
+                    ),
+                    child: Slider(
+                      value: widget.settings.detailValue,
+                      min: 1,
+                      max: 30,
+                      label: (widget.settings.detailValue).toString(),
+                      divisions: 29,
+                      onChanged: (value) {
+                        setState(() {
+                          widget.settings.changeDetailValue(value);
+                        });
+                      },
+                    ),
+                  ),
                 ),
-                child: Slider(
-                  value: widget.settings.detailValue,
-                  min: 1,
-                  max: 30,
-                  label: (widget.settings.detailValue).toString(),
-                  divisions: 29,
-                  onChanged: (value) {
-                    setState(() {
-                      widget.settings.changeDetailValue(value);
-                    });
-                  },
+                Container(
+                  padding: EdgeInsets.only(left: 18.0, top: 5.0),
+                  child: Tips(
+                    tip: "Detail needed to stop splitting the quadrant",
+                  ),
                 ),
-              ),
+              ],
             ),
             Container(
               child: Text(
@@ -91,16 +107,26 @@ class _SlidersState extends State<Sliders> {
                 style: Theme.of(context).textTheme.bodyText2,
               ),
             ),
-            Container(
-              padding: EdgeInsets.only(
-                  top: MediaQuery.of(context).size.height * 0.01,
-                  bottom: MediaQuery.of(context).size.height * 0.01),
-              width: 500.0,
-              child: Column(
-                children: [
-                  NumericUpDown(settings: widget.settings),
-                ],
-              ),
+            Stack(
+              children: [
+                Container(
+                  padding: EdgeInsets.only(
+                      top: MediaQuery.of(context).size.height * 0.01,
+                      bottom: MediaQuery.of(context).size.height * 0.01),
+                  width: 500.0,
+                  child: Column(
+                    children: [
+                      NumericUpDown(settings: widget.settings),
+                    ],
+                  ),
+                ),
+                Container(
+                  padding: EdgeInsets.only(left: 18.0, top: 15.0),
+                  child: Tips(
+                    tip: "if 2.0, image returned will be twice as large",
+                  ),
+                ),
+              ],
             ),
             Container(
               width: 300.0,

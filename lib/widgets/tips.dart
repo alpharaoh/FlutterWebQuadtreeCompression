@@ -33,48 +33,45 @@ class _TipsState extends State<Tips> {
 
   @override
   Widget build(BuildContext context) {
-    return Positioned(
-      // right: widget.right,
-      // top: widget.top,
-      child: Container(
-        child: SizedBox(
-          child: Row(
-            children: [
-              Visibility(
-                visible: tipVisible,
+    return Container(
+      child: SizedBox(
+        child: Row(
+          children: [
+            Container(
+              padding: EdgeInsets.only(left: 10.0, top: 10.0, bottom: 10.0),
+              child: MouseRegion(
+                cursor: SystemMouseCursors.precise,
+                onEnter: showTip,
+                onExit: hideTip,
                 child: Container(
-                  color: Colors.black38,
-                  padding: EdgeInsets.only(
-                      right: 10.0, left: 10.0, top: 10.0, bottom: 10.0),
-                  child: Center(
-                    child: Text(
-                      widget.tip,
-                      style: GoogleFonts.roboto(
-                        color: Colors.white,
-                        fontWeight: FontWeight.w300,
-                        letterSpacing: 0.5,
-                        fontSize: MediaQuery.of(context).size.height * 0.015,
-                      ),
+                  child: Icon(
+                    Icons.help,
+                    size: 20.0,
+                    color: Colors.white10,
+                  ),
+                ),
+              ),
+            ),
+            Visibility(
+              visible: tipVisible,
+              child: Container(
+                color: Colors.black87,
+                padding: EdgeInsets.only(
+                    right: 10.0, left: 10.0, top: 10.0, bottom: 10.0),
+                child: Center(
+                  child: Text(
+                    widget.tip,
+                    style: GoogleFonts.roboto(
+                      color: Colors.white,
+                      fontWeight: FontWeight.w300,
+                      letterSpacing: 0.5,
+                      fontSize: MediaQuery.of(context).size.height * 0.015,
                     ),
                   ),
                 ),
               ),
-              Container(
-                padding: EdgeInsets.only(left: 10.0, top: 10.0, bottom: 10.0),
-                child: MouseRegion(
-                  cursor: SystemMouseCursors.precise,
-                  onEnter: showTip,
-                  onExit: hideTip,
-                  child: Container(
-                    child: Icon(
-                      Icons.help,
-                      color: Colors.white24,
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

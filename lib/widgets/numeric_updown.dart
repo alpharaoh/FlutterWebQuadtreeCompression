@@ -11,7 +11,12 @@ class NumericUpDown extends StatefulWidget {
 }
 
 class _NumericUpDownState extends State<NumericUpDown> {
-  var textController = new TextEditingController();
+  TextEditingController textController = new TextEditingController();
+
+  void setCursorPosToEnd() {
+    textController.selection = TextSelection.fromPosition(
+        TextPosition(offset: textController.text.length));
+  }
 
   void upCounter() {
     setState(() {
@@ -52,21 +57,24 @@ class _NumericUpDownState extends State<NumericUpDown> {
                 color: Colors.white54,
               ),
               controller: textController,
-              onChanged: (val) =>
-                  widget.settings.changeSizeMultValue(double.parse(val)),
+              onChanged: (val) {
+                widget.settings.changeSizeMultValue(double.parse(val));
+                setCursorPosToEnd();
+              },
               textAlign: TextAlign.center,
               keyboardType: TextInputType.number,
               decoration: InputDecoration(
-                  // filled: true,
-                  // fillColor: Colors.black38,
-                  border: InputBorder.none,
-                  focusedBorder: InputBorder.none,
-                  enabledBorder: InputBorder.none,
-                  errorBorder: InputBorder.none,
-                  disabledBorder: InputBorder.none,
-                  contentPadding:
-                      EdgeInsets.only(left: 10, bottom: 10, top: 10, right: 10),
-                  hintText: "1.0"),
+                // filled: true,
+                // fillColor: Colors.black38,
+                border: InputBorder.none,
+                focusedBorder: InputBorder.none,
+                enabledBorder: InputBorder.none,
+                errorBorder: InputBorder.none,
+                disabledBorder: InputBorder.none,
+                contentPadding:
+                    EdgeInsets.only(left: 10, bottom: 10, top: 10, right: 10),
+                hintText: "1.0",
+              ),
             ),
           ),
           Container(

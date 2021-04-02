@@ -8,6 +8,24 @@ class QuadTreeHelp extends StatefulWidget {
 }
 
 class _QuadTreeHelpState extends State<QuadTreeHelp> {
+  double fontSizeThreshold = 14.0;
+
+  double getFontSize() {
+    double fontSize = MediaQuery.of(context).size.height * 0.015;
+    if (fontSize > fontSizeThreshold) {
+      return fontSizeThreshold;
+    }
+    return fontSize;
+  }
+
+  double getLetterSpacing() {
+    if (MediaQuery.of(context).size.height < 805) {
+      return 0.0;
+    }
+    // print(MediaQuery.of(context).size.height);
+    return 2.0;
+  }
+
   String _textContent1 =
       "Quadtrees are a type of tree data structure where each node in the tree has four children. For image compression we can use quadtrees to divide two-dimensional spaces into smaller and smaller quadrants. These quadrants will hold data for it's average colour, current depth in the quadtree and it's colour 'detail'.";
   String _textContent2 =
@@ -49,7 +67,7 @@ class _QuadTreeHelpState extends State<QuadTreeHelp> {
                         fontWeight: FontWeight.w700,
                         color: Colors.white,
                         fontSize: MediaQuery.of(context).size.height * 0.035,
-                        letterSpacing: 1.0,
+                        letterSpacing: getLetterSpacing(),
                       ),
                       textAlign: TextAlign.right,
                     ),
@@ -59,22 +77,32 @@ class _QuadTreeHelpState extends State<QuadTreeHelp> {
             ],
           ),
           Container(
-            // color: Colors.black26,
-            height: MediaQuery.of(context).size.height - 620,
-            child: Container(
-              padding: EdgeInsets.only(
-                  right: 50.0,
-                  left: 50.0,
-                  top: MediaQuery.of(context).size.height * 0.025),
-              child: AutoSizeText(
-                _textContent1 + "\n\n" + _textContent2 + "\n\n" + _textContent3,
-                style: GoogleFonts.roboto(
-                  color: Colors.white,
-                  fontWeight: FontWeight.w300,
-                  letterSpacing: 0.5,
-                  fontSize: MediaQuery.of(context).size.height * 0.015,
+            width: double.infinity,
+            height: 500.0,
+            padding: EdgeInsets.only(
+                right: 50.0,
+                left: 50.0,
+                top: MediaQuery.of(context).size.height * 0.025),
+            child: FittedBox(
+              fit: BoxFit.fill,
+              child: Container(
+                height: 460.0,
+                width: 300.0,
+                child: Text(
+                  // "Hello Hello dasd sad as adsads d  dsa  dsad adsa  dsa",
+                  _textContent1 +
+                      "\n\n" +
+                      _textContent2 +
+                      "\n\n" +
+                      _textContent3,
+                  style: GoogleFonts.roboto(
+                    color: Colors.white,
+                    fontWeight: FontWeight.w300,
+                    letterSpacing: 1,
+                    fontSize: 13.0,
+                  ),
+                  // minFontSize: 8,
                 ),
-                minFontSize: 8,
               ),
             ),
           ),
