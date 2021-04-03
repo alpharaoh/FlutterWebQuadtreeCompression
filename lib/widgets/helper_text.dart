@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class QuadTreeHelp extends StatefulWidget {
@@ -10,19 +9,18 @@ class QuadTreeHelp extends StatefulWidget {
 class _QuadTreeHelpState extends State<QuadTreeHelp> {
   double fontSizeThreshold = 14.0;
 
-  double getFontSize() {
-    double fontSize = MediaQuery.of(context).size.height * 0.015;
-    if (fontSize > fontSizeThreshold) {
-      return fontSizeThreshold;
-    }
-    return fontSize;
-  }
+  // double getFontSize() {
+  //   double fontSize = MediaQuery.of(context).size.height * 0.015;
+  //   if (fontSize > fontSizeThreshold) {
+  //     return fontSizeThreshold;
+  //   }
+  //   return fontSize;
+  // }
 
   double getLetterSpacing() {
     if (MediaQuery.of(context).size.height < 805) {
       return 0.0;
     }
-    // print(MediaQuery.of(context).size.height);
     return 2.0;
   }
 
@@ -111,66 +109,3 @@ class _QuadTreeHelpState extends State<QuadTreeHelp> {
     );
   }
 }
-// child: Column(
-//   children: [
-//     Container(
-//       height: (MediaQuery.of(context).size.height - 700) / 2.5,
-//       // padding:
-//       //     EdgeInsets.only(top: 0.0), //right: 60.0, left: 60.0,
-//       child: AutoSizeText(
-//         _textContent1,
-//         // textAlign: TextAlign.right,
-//         style: Theme.of(context).textTheme.bodyText1,
-//       ),
-//     ),
-//     Container(
-//       height: (MediaQuery.of(context).size.height - 700) / 4,
-//       // padding:
-//       //     EdgeInsets.only(top: 25.0), //right: 60.0, left: 60.0,
-//       child: AutoSizeText(
-//         _textContent2,
-//         // textAlign: TextAlign.right,
-//         style: Theme.of(context).textTheme.bodyText1,
-//       ),
-//     ),
-//     Container(
-//       height: (MediaQuery.of(context).size.height - 700) / 6,
-//       // padding:
-//       //     EdgeInsets.only(top: 25.0), //right: 60.0, left: 60.0,
-//       child: AutoSizeText(
-//         _textContent3,
-//         // textAlign: TextAlign.right,
-//         style: Theme.of(context).textTheme.bodyText1,
-//       ),
-//     ),
-//   ],
-// ),
-
-// Column(
-//   children: [
-//     Container(
-//       padding: EdgeInsets.only(right: 60.0, left: 60.0, top: 25.0),
-//       child: Text(
-//         _textContent1,
-//         // textAlign: TextAlign.right,
-//         style: Theme.of(context).textTheme.bodyText1,
-//       ),
-//     ),
-//     Container(
-//       padding: EdgeInsets.only(right: 60.0, left: 60.0, top: 25.0),
-//       child: Text(
-//         _textContent2,
-//         // textAlign: TextAlign.right,
-//         style: Theme.of(context).textTheme.bodyText1,
-//       ),
-//     ),
-//     Container(
-//       padding: EdgeInsets.only(right: 60.0, left: 60.0, top: 25.0),
-//       child: Text(
-//         _textContent3,
-//         // textAlign: TextAlign.right,
-//         style: Theme.of(context).textTheme.bodyText1,
-//       ),
-//     ),
-//   ],
-// ),

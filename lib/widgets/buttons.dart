@@ -80,15 +80,6 @@ class _ButtonsGroupState extends State<ButtonsGroup> {
               color: Colors.white,
             ),
           ),
-          // Reset action button
-          // FloatingActionButton(
-          //   backgroundColor: Color.fromARGB(255, 6, 6, 6),
-          //   onPressed: () {},
-          //   child: Icon(
-          //     Icons.refresh_sharp,
-          //     color: Colors.white,
-          //   ),
-          // ),
           // Download action button
           FloatingActionButton(
             backgroundColor: Color.fromARGB(255, 6, 6, 6),

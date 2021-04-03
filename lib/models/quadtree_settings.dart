@@ -6,18 +6,6 @@ class QuadTreeSettings {
   bool isGif = false;
   bool showLines = true;
 
-  List<String> getValues() {
-    List<String> list = List<String>.filled(4, "");
-    list[0] = depthValue.toString();
-    list[1] = detailValue.toString();
-    list[2] = maxDepthValue.toString();
-    list[3] = sizeMultValue.toString();
-    list[4] = isGif.toString();
-    list[5] = showLines.toString();
-
-    return list;
-  }
-
   void changeDepthValue(double val) {
     depthValue = val;
   }

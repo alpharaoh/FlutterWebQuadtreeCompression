@@ -3,14 +3,8 @@ import 'package:google_fonts/google_fonts.dart';
 
 class Tips extends StatefulWidget {
   final String tip;
-  // final double right;
-  // final double top;
 
-  Tips({
-    @required this.tip,
-    // @required this.right,
-    // @required this.top,
-  });
+  Tips({@required this.tip});
 
   @override
   _TipsState createState() => _TipsState();

@@ -26,15 +26,6 @@ class _CreditsState extends State<Credits> {
             top: MediaQuery.of(context).size.height * 0.025),
         child: Column(
           children: [
-            // Container(
-            //   padding: EdgeInsets.only(
-            //     top: 30.0,
-            //     bottom: 20.0,
-            //   ),
-            //   child: Divider(
-            //     height: 10.0,
-            //   ),
-            // ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [

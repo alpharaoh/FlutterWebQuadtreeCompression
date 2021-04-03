@@ -57,7 +57,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      home: HomeView(title: "Image Quadtree Compression"),
+      home: HomeView(),
     );
   }
 }
